@@ -1,0 +1,46 @@
+{
+  "strengths": [
+    { "content": "the lesson started on time" },
+    { "content": "teaching method created two different styles" },
+    {
+      "content": "various instructional methods were identified and used in the lesson"
+    },
+    { "content": "adequate resources were available" },
+    { "content": "students were actively involved during the lesson" },
+    { "content": "atmosphere was conducive to learning" },
+    { "content": "appropriate prerequisite skills were identified" },
+    { "content": "learning outcome objectives were met" },
+    {
+      "content": "assessment provides the opportunity to demonstrate mastery of the skills taught"
+    }
+  ],
+  "weakness": [
+    {
+      "content": "the lesson did not go as planned as time ran out due to extended discussions enable students to grasp the concept"
+    },
+    { "content": "lesson was often interrupted" },
+    { "content": "learning environment was not adequately prepared" },
+    {
+      "content": "assessment activity did not measure what was practiced and taught"
+    },
+    { "content": "no summary of the lesson or wrap up occurred" },
+    { "content": "objectives were missing" },
+    { "content": "objectives did not define what students would be able to do" }
+  ],
+  "wayForward": [
+    {
+      "content": "modify content although more discussion and student involvement in lesson"
+    },
+    {
+      "content": "incorporate other teaching learning strategies to make lesson more interesting"
+    },
+    { "content": "utilize resource personnel where appropriate" },
+    { "content": "utilize the different assessment activities" },
+    { "content": "provide assessment activities for various learning styles" },
+    { "content": "summarize the lesson content" },
+    {
+      "content": "ensure objectives clearly states what student would be able to do at the end of the lesson"
+    },
+    { "content": "plan lesson that incorporates use of fears resources" }
+  ]
+}

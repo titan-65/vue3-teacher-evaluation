@@ -1,0 +1,42 @@
+{
+  "studentStrengths": [
+    { "content": "learners were in a mood of readiness for learning" },
+    { "content": "new skills were practiced allowing students interaction and cooperation" },
+    {
+      "content": "lesson was student center"
+    },
+    { "content": "opportunity was provided to recap what was taught and learned" },
+    { "content": "assessment activity was completed correctly and on time" },
+    { "content": "previous knowledge was demonstrated" }
+  ],
+  "studentWeakness": [
+      { "content": "task were absent or purely skill base without connection through real-world application" },
+    { "content": "students were not able to interact and operate in pairs or groups" },
+    {
+      "content": "individual or groups were not effectively monitored"
+    },
+    {
+      "content": "the more advanced learners were not challenged"
+    },
+    {
+      "content": "students were not able to complete activities correctly or within the specific time"
+    },
+    {
+      "content": "previous knowledge was not demonstrated"
+    } 
+  ],
+  "studentWayForward": [
+    {
+      "content": "give one and one assistance the weaker students when applicable"
+    },
+    { "content": "use cooperative group learning" },
+    { "content": "additional classes are required" },
+    {
+      "content": "plan more activities to facilitate  advanced learners to keep them occupied and engaged plan"
+    },
+    { "content": "activities to cater for slower students" },
+    {
+      "content": "ensure that the collection between activities and real-world application is set"
+    }
+  ]
+}

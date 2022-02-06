@@ -1,19 +1,36 @@
 <script setup>
-import { ref, reactive, onMounted, onBeforeUpdate, watch, watchEffect } from 'vue'
-import { jsPDF } from 'jspdf'
+import {
+  ref,
+  reactive,
+  onMounted,
+  onBeforeUpdate,
+  watch,
+  watchEffect,
+  toRef,
+} from "vue";
+import { jsPDF } from "jspdf";
+import FormEvalItem from "./FormEvalItem.vue";
+import lessonData from "../../../data/lesson.json";
+import studentData from "../../../data/student.json";
+import teacherData from "../../../data/teacher.json";
 
-const lessonFieldOne = ref('')
-const lessonFieldTwo = ref('')
+const lessonFieldOne = ref("");
+const lessonFieldTwo = ref("");
+
+const { strengths, weakness, wayForward } = lessonData;
+const { studentStrengths, studentWayForward, studentWeakness } = studentData;
+const { teacherStrengths, teacherWeakness, teacherWayForward } = teacherData;
+
 
 const handleSubmit = () => {
-  const formData = [lessonFieldOne.value, lessonFieldTwo.value]
-  console.log(formData)
+  const formData = [lessonFieldOne.value, lessonFieldTwo.value];
+  console.log(formData);
 
-  const doc = new jsPDF()
+  const doc = new jsPDF();
 
-  doc.text(formData, 10, 10)
-  doc.save(`${lessonFieldOne.value}.pdf`)
-}
+  doc.text(formData, 10, 10);
+  doc.save(`${lessonFieldOne.value}.pdf`);
+};
 </script>
 <template>
   <div class="bg-gray-200 py-10">
@@ -24,7 +41,9 @@ const handleSubmit = () => {
             class="xl:w-full border-b border-gray-300 dark:border-gray-700 py-5 bg-white dark:bg-gray-800"
           >
             <div class="flex w-11/12 mx-auto xl:w-full xl:mx-0 items-center">
-              <p class="text-lg text-gray-800 dark:text-gray-100 font-bold">Profile</p>
+              <p class="text-lg text-gray-800 dark:text-gray-100 font-bold">
+                Profile
+              </p>
               <div class="ml-2 cursor-pointer text-gray-600 dark:text-gray-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -73,19 +92,23 @@ const handleSubmit = () => {
                       <path
                         d="M9 7 h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3"
                       />
-                      <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                      <path
+                        d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3"
+                      />
                       <line x1="16" y1="5" x2="19" y2="8" />
                     </svg>
                   </div>
                 </div>
-                
               </div>
-              
             </div>
           </div>
         </div>
-        <div class="container mx-auto bg-white dark:bg-gray-800 mt-10 rounded px-4">
-          <div class="xl:w-full border-b border-gray-300 dark:border-gray-700 py-5">
+        <div
+          class="container mx-auto bg-white dark:bg-gray-800 mt-10 rounded px-4"
+        >
+          <div
+            class="xl:w-full border-b border-gray-300 dark:border-gray-700 py-5"
+          >
             <div class="flex w-11/12 mx-auto xl:w-full xl:mx-0 items-center">
               <p class="text-lg text-gray-800 dark:text-gray-100 font-bold">
                 Personal Information
@@ -175,7 +198,9 @@ const handleSubmit = () => {
                       placeholder="example@gmail.com"
                     />
                   </div>
-                  <div class="flex justify-between items-center pt-1 text-green-400">
+                  <div
+                    class="flex justify-between items-center pt-1 text-green-400"
+                  >
                     <p class="text-xs">Email submission success!</p>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -196,7 +221,6 @@ const handleSubmit = () => {
                     </svg>
                   </div>
                 </div>
-                
               </form>
             </div>
           </div>
@@ -208,10 +232,13 @@ const handleSubmit = () => {
             <div class="flex items-center mx-auto">
               <div class="container mx-auto">
                 <div class="mx-auto xl:w-full">
-                  <p class="text-lg text-gray-800 dark:text-gray-100 font-bold">Evaulation Choices</p>
+                  <p class="text-lg text-gray-800 dark:text-gray-100 font-bold">
+                    Evaulation Choices
+                  </p>
                   <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
-                    Please select choices based on the categories involving Lesson, Student, and Teacher.
-                    Categories highlights the strength, weakness, and way forward your lesson.
+                    Please select choices based on the categories involving
+                    Lesson, Student, and Teacher. Categories highlights the
+                    strength, weakness, and way forward your lesson.
                   </p>
                 </div>
               </div>
@@ -237,223 +264,292 @@ const handleSubmit = () => {
                 <rect x="3" y="5" width="18" height="14" rx="2" />
                 <polyline points="3 7 12 13 21 7" />
               </svg>
-              <p class="text-sm font-bold ml-2 text-gray-800 dark:text-gray-100">
+              <p
+                class="text-xl font-bold ml-2 text-gray-800 dark:text-gray-100"
+              >
                 Lesson
               </p>
             </div>
             <div class="xl:w-full py-5 px-8">
-            <div class="flex items-center mx-auto">
-              <div class="container mx-auto">
-                <div class="mx-auto xl:w-full">
-                  <p class="text-lg text-gray-800 dark:text-gray-100 font-bold">Strengths</p>
-                  <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
-                    Please select choices based on the categories involving Lesson.
-                  </p>
+              <div class="flex items-center mx-auto">
+                <div class="container mx-auto">
+                  <div class="mx-auto xl:w-full">
+                    <p
+                      class="text-sm text-gray-800 dark:text-gray-100 font-bold"
+                    >
+                      Lesson Strengths
+                    </p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
+                      Please select choices based on the categories involving
+                      Lesson.
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-            <div class="px-8">
-              <div class="flex justify-between items-center mb-8 mt-4">
-                <div class="w-9/12">
-                  <p class="text-sm text-gray-800 dark:text-gray-100 pb-1">Comments</p>
-                  <p class="text-sm text-gray-500 dark:text-gray-400">
-                    Get notified when a post or comment is made
-                  </p>
-                </div>
-                <div class="cursor-pointer rounded-full bg-gray-200 relative shadow-sm">
-                  <input
-                    type="checkbox"
-                    name="email_comments"
-                    id="toggle1"
-                    class="focus:outline-none checkbox w-6 h-6 rounded-full bg-white dark:bg-gray-400 absolute shadow-sm appearance-none cursor-pointer border border-transparent top-0 bottom-0 m-auto"
-                  />
-                  <label
-                    for="toggle1"
-                    class="toggle-label block w-12 h-4 overflow-hidden rounded-full bg-gray-300 dark:bg-gray-800 cursor-pointer"
-                  ></label>
-                </div>
-              </div>
-              <div class="flex justify-between items-center mb-8 mt-4">
-                <div class="w-9/12">
-                  <p class="text-sm text-gray-800 dark:text-gray-100 pb-1">Comments</p>
-                  <p class="text-sm text-gray-500 dark:text-gray-400">
-                    Get notified when a post or comment is made
-                  </p>
-                </div>
-                <div class="cursor-pointer rounded-full bg-gray-200 relative shadow-sm">
-                  <input
-                    type="checkbox"
-                    name="email_comments"
-                    id="toggle1"
-                    class="focus:outline-none checkbox w-6 h-6 rounded-full bg-white dark:bg-gray-400 absolute shadow-sm appearance-none cursor-pointer border border-transparent top-0 bottom-0 m-auto"
-                  />
-                  <label
-                    for="toggle1"
-                    class="toggle-label block w-12 h-4 overflow-hidden rounded-full bg-gray-300 dark:bg-gray-800 cursor-pointer"
-                  ></label>
-                </div>
-              </div>
-              <div class="flex justify-between items-center mb-8 mt-4">
-                <div class="w-9/12">
-                  <p class="text-sm text-gray-800 dark:text-gray-100 pb-1">Comments</p>
-                  <p class="text-sm text-gray-500 dark:text-gray-400">
-                    Get notified when a post or comment is made
-                  </p>
-                </div>
-                <div class="cursor-pointer rounded-full bg-gray-200 relative shadow-sm">
-                  <input
-                    type="checkbox"
-                    name="email_comments"
-                    id="toggle1"
-                    class="focus:outline-none checkbox w-6 h-6 rounded-full bg-white dark:bg-gray-400 absolute shadow-sm appearance-none cursor-pointer border border-transparent top-0 bottom-0 m-auto"
-                  />
-                  <label
-                    for="toggle1"
-                    class="toggle-label block w-12 h-4 overflow-hidden rounded-full bg-gray-300 dark:bg-gray-800 cursor-pointer"
-                  ></label>
-                </div>
-              </div>
-              <div class="flex justify-between items-center mb-8">
-                <div class="w-9/12">
-                  <p class="text-sm text-gray-800 dark:text-gray-100 pb-1">
-                    Job Applications
-                  </p>
-                  <p class="text-sm text-gray-500 dark:text-gray-400">
-                    Get notified when a candidate applies to a job posting
-                  </p>
-                </div>
-                <div class="cursor-pointer rounded-full bg-gray-200 relative shadow-sm">
-                  <input
-                    type="checkbox"
-                    name="email_job_application"
-                    id="toggle2"
-                    class="focus:outline-none checkbox w-6 h-6 rounded-full bg-white dark:bg-gray-400 absolute shadow-sm appearance-none cursor-pointer border border-transparent top-0 bottom-0 m-auto"
-                  />
-                  <label
-                    for="toggle2"
-                    class="toggle-label block w-12 h-4 overflow-hidden rounded-full bg-gray-300 dark:bg-gray-800 cursor-pointer"
-                  ></label>
-                </div>
-              </div>
-              <div class="flex justify-between items-center mb-8">
-                <div class="w-9/12">
-                  <p class="text-sm text-gray-800 dark:text-gray-100 pb-1">
-                    Product Updates
-                  </p>
-                  <p class="text-sm text-gray-500 dark:text-gray-400">
-                    Get notifitied when there is a new product feature or upgrades
-                  </p>
-                </div>
-                <div class="cursor-pointer rounded-full bg-gray-200 relative shadow-sm">
-                  <input
-                    type="checkbox"
-                    name="email_product_update"
-                    id="toggle3"
-                    class="focus:outline-none checkbox w-6 h-6 rounded-full bg-white dark:bg-gray-400 absolute shadow-sm appearance-none cursor-pointer border border-transparent top-0 bottom-0 m-auto"
-                  />
-                  <label
-                    for="toggle3"
-                    class="toggle-label block w-12 h-4 overflow-hidden rounded-full bg-gray-300 dark:bg-gray-800 cursor-pointer"
-                  ></label>
-                </div>
-              </div>
-            </div>
-            <div class="pb-4 border-b border-gray-300 dark:border-gray-700 px-8">
-              <div class="flex items-center text-gray-800 dark:text-gray-100">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="icon icon-tabler icon-tabler-bell"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" />
-                  <path
-                    d="M10 5a2 2 0 0 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6"
-                  />
-                  <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
-                </svg>
-                <p class="text-sm font-bold ml-2 text-gray-800 dark:text-gray-100">
-                  Push Notifications
-                </p>
               </div>
             </div>
             <div class="px-8">
-              <div class="flex justify-between items-center mb-8 mt-4">
-                <div class="w-9/12">
-                  <p class="text-sm text-gray-800 dark:text-gray-100 pb-1">Comments</p>
-                  <p class="text-sm text-gray-500 dark:text-gray-400">
-                    Get notified when a post or comment is made
-                  </p>
-                </div>
-                <div class="cursor-pointer rounded-full bg-gray-200 relative shadow-sm">
-                  <input
-                    type="checkbox"
-                    name="notification_comment"
-                    id="toggle4"
-                    class="focus:outline-none checkbox w-6 h-6 rounded-full bg-white dark:bg-gray-400 absolute shadow-sm appearance-none cursor-pointer border border-transparent top-0 bottom-0 m-auto"
-                  />
-                  <label
-                    for="toggle4"
-                    class="toggle-label block w-12 h-4 overflow-hidden rounded-full bg-gray-300 dark:bg-gray-800 cursor-pointer"
-                  ></label>
-                </div>
-              </div>
-              <div class="flex justify-between items-center mb-8">
-                <div class="w-9/12">
-                  <p class="text-sm text-gray-800 dark:text-gray-100 pb-1">
-                    Job Applications
-                  </p>
-                  <p class="text-sm text-gray-500 dark:text-gray-400">
-                    Get notified when a candidate applies to a job posting
-                  </p>
-                </div>
-                <div class="cursor-pointer rounded-full bg-gray-200 relative shadow-sm">
-                  <input
-                    type="checkbox"
-                    name="notification_application"
-                    id="toggle5"
-                    class="focus:outline-none checkbox w-6 h-6 rounded-full bg-white dark:bg-gray-400 absolute shadow-sm appearance-none cursor-pointer border border-transparent top-0 bottom-0 m-auto"
-                  />
-                  <label
-                    for="toggle5"
-                    class="toggle-label block w-12 h-4 overflow-hidden rounded-full bg-gray-300 dark:bg-gray-800 cursor-pointer"
-                  ></label>
-                </div>
-              </div>
-              <div class="flex justify-between items-center mb-8">
-                <div class="w-9/12">
-                  <p class="text-sm text-gray-800 dark:text-gray-100 pb-1">
-                    Product Updates
-                  </p>
-                  <p class="text-sm text-gray-500 dark:text-gray-400">
-                    Get notifitied when there is a new product feature or upgrades
-                  </p>
-                </div>
-                <div class="cursor-pointer rounded-full bg-gray-200 relative shadow-sm">
-                  <input
-                    type="checkbox"
-                    name="notification_updates"
-                    id="toggle6"
-                    class="focus:outline-none checkbox w-6 h-6 rounded-full bg-white dark:bg-gray-400 absolute shadow-sm appearance-none cursor-pointer border border-transparent top-0 bottom-0 m-auto"
-                  />
-                  <label
-                    for="toggle6"
-                    class="toggle-label block w-12 h-4 overflow-hidden rounded-full bg-gray-300 dark:bg-gray-800 cursor-pointer"
-                  ></label>
+              <FormEvalItem
+                v-for="strength in strengths"
+                :key="strength"
+                :strength="strength"
+              />
+            </div>
+            <div class="xl:w-full py-5 px-8">
+              <div class="flex items-center mx-auto">
+                <div class="container mx-auto">
+                  <div class="mx-auto xl:w-full">
+                    <p
+                      class="text-lg text-gray-800 dark:text-gray-100 font-bold"
+                    >
+                      Lesson Weakness
+                    </p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
+                      Please select choices based on the categories involving
+                      Lesson.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
+            <div class="px-8">
+              <FormEvalItem
+                v-for="evaluate in weakness"
+                :key="evaluate"
+                :strength="evaluate"
+              />
+            </div>
+            <div class="xl:w-full py-5 px-8">
+              <div class="flex items-center mx-auto">
+                <div class="container mx-auto">
+                  <div class="mx-auto xl:w-full">
+                    <p
+                      class="text-lg text-gray-800 dark:text-gray-100 font-bold"
+                    >
+                      Lesson Way Forward
+                    </p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
+                      Please select choices based on the categories involving
+                      Lesson.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="px-8">
+              <FormEvalItem
+                v-for="evaluate in wayForward"
+                :key="evaluate"
+                :strength="evaluate"
+              />
+            </div>
           </div>
+          <!-- Student Starts Here -->
+          <div class="container mx-auto pb-6">
+            <div
+              class="flex items-center pb-4 border-b border-gray-300 dark:border-gray-700 px-8 text-gray-800 dark:text-gray-100"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-tabler icon-tabler-mail"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <polyline points="3 7 12 13 21 7" />
+              </svg>
+              <p
+                class="text-sm font-bold ml-2 text-gray-800 dark:text-gray-100"
+              >
+                Student
+              </p>
+            </div>
+            <div class="xl:w-full py-5 px-8">
+              <div class="flex items-center mx-auto">
+                <div class="container mx-auto">
+                  <div class="mx-auto xl:w-full">
+                    <p
+                      class="text-lg text-gray-800 dark:text-gray-100 font-bold"
+                    >
+                      Student Strengths
+                    </p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
+                      Please select choices based on the categories involving
+                      Lesson.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="px-8">
+              <FormEvalItem
+                v-for="studentEval in studentStrengths"
+                :key="studentEval"
+                :strength="studentEval"
+              />
+            </div>
+            <div class="xl:w-full py-5 px-8">
+              <div class="flex items-center mx-auto">
+                <div class="container mx-auto">
+                  <div class="mx-auto xl:w-full">
+                    <p
+                      class="text-lg text-gray-800 dark:text-gray-100 font-bold"
+                    >
+                      Student Weakness
+                    </p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
+                      Please select choices based on the categories involving
+                      Lesson.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="px-8">
+              <FormEvalItem
+                v-for="studentEval in studentWeakness"
+                :key="studentEval"
+                :strength="studentEval"
+              />
+            </div>
+            <div class="xl:w-full py-5 px-8">
+              <div class="flex items-center mx-auto">
+                <div class="container mx-auto">
+                  <div class="mx-auto xl:w-full">
+                    <p
+                      class="text-lg text-gray-800 dark:text-gray-100 font-bold"
+                    >
+                      Student WayForward
+                    </p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
+                      Please select choices based on the categories involving
+                      Lesson.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="px-8">
+              <FormEvalItem
+                v-for="studentEval in studentWayForward"
+                :key="studentEval"
+                :strength="studentEval"
+              />
+            </div>
+          </div>
+          <!-- Student Ends Here -->
+          <!-- Teacher Starts Here -->
+          <div class="container mx-auto pb-6">
+            <div
+              class="flex items-center pb-4 border-b border-gray-300 dark:border-gray-700 px-8 text-gray-800 dark:text-gray-100"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-tabler icon-tabler-mail"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <polyline points="3 7 12 13 21 7" />
+              </svg>
+              <p
+                class="text-sm font-bold ml-2 text-gray-800 dark:text-gray-100"
+              >
+                Teacher
+              </p>
+            </div>
+            <div class="xl:w-full py-5 px-8">
+              <div class="flex items-center mx-auto">
+                <div class="container mx-auto">
+                  <div class="mx-auto xl:w-full">
+                    <p
+                      class="text-lg text-gray-800 dark:text-gray-100 font-bold"
+                    >
+                      Teacher Strengths
+                    </p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
+                      Please select choices based on the categories involving
+                      Lesson.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="px-8">
+              <FormEvalItem
+                v-for="teacherEval in teacherStrengths"
+                :key="teacherEval"
+                :strength="teacherEval"
+              />
+            </div>
+            <div class="xl:w-full py-5 px-8">
+              <div class="flex items-center mx-auto">
+                <div class="container mx-auto">
+                  <div class="mx-auto xl:w-full">
+                    <p
+                      class="text-lg text-gray-800 dark:text-gray-100 font-bold"
+                    >
+                     Teacher Weakness
+                    </p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
+                      Please select choices based on the categories involving
+                      Lesson.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="px-8">
+              <FormEvalItem
+                v-for="teacherEval in teacherWeakness"
+                :key="teacherEval"
+                :strength="teacherEval"
+              />
+            </div>
+            <div class="xl:w-full py-5 px-8">
+              <div class="flex items-center mx-auto">
+                <div class="container mx-auto">
+                  <div class="mx-auto xl:w-full">
+                    <p
+                      class="text-lg text-gray-800 dark:text-gray-100 font-bold"
+                    >
+                      Teacher WayForward
+                    </p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
+                      Please select choices based on the categories involving
+                      Lesson.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="px-8">
+              <FormEvalItem
+                v-for="teacherEval in teacherWayForward"
+                :key="teacherEval"
+                :strength="teacherEval"
+              />
+            </div>
+          </div>
+          <!-- Teacher Ends Here -->
         </div>
         <div class="container mx-auto w-11/12 xl:w-full">
-          <div class="w-full py-4 sm:px-0 bg-white dark:bg-gray-800 flex justify-end">
+          <div
+            class="w-full py-4 sm:px-0 bg-white dark:bg-gray-800 flex justify-end"
+          >
             <button
               class="bg-gray-200 focus:outline-none transition duration-150 ease-in-out hover:bg-gray-300 dark:bg-gray-700 rounded text-indigo-600 dark:text-indigo-600 px-6 py-2 text-xs mr-4"
             >

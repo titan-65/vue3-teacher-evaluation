@@ -1,0 +1,34 @@
+{
+  "teacherStrengths": [
+    {
+      "content": "lesson went according to plan"
+    },
+    {
+      "content": "several teaching strategies to cater for all learners were utilized"
+    },
+    { "content": "skills were broken down into a learnable part" },
+    {
+      "content": "constructive feedback was provided for activities and skills being practiced"
+    }
+  ],
+  "teacherWeakness": [
+    {
+      "content": "teacher was adequately prepared for class"
+    },
+    {
+      "content": "teacher did not utilize resources well"
+    },
+    { "content": "teacher did not cater for all learning style" },
+    { "content": "teacher was not effective in lesson delivery" },
+    { "content": "feedback was not constructive" },
+    { "content": "no feedback was offered to students" }
+  ],
+  "teacherWayForward": [
+    {
+      "content": "improve on lesson planning"
+    },
+    { "content": "cater for differentiated learning" },
+    { "content": "reflect on lesson and no modifications in future lessons" },
+    { "content": "" }
+  ]
+}
