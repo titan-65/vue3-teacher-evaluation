@@ -6,8 +6,9 @@ import lessonData from "../../../data/lesson.json";
 import studentData from "../../../data/student.json";
 import teacherData from "../../../data/teacher.json";
 
-const lessonFieldOne = ref("");
-const lessonFieldTwo = ref("");
+const firstName = ref('');
+const lastName = ref('');
+const email = ref('')
 const lessonArray = ref([]);
 
 let { strengths, weakness, wayForward } = lessonData;
@@ -62,21 +63,24 @@ const _teacherWayForward = teacherWayForward.map((wayForward) => ({
 
 const onStrengthChecked = (selectedIndex) => {
   console.log(selectedIndex);
-  for (let i = 0; i < _strength.length; i++) {
-    if (i === selectedIndex) {
-      _strength[i].isSelected = !_strength[i].isSelected;
-    }
-  }
+
+  // lessonArray.value.push(selectedIndex);
+  // console.log(lessonArray.value);
+  // for (let i = 0; i < _strength.length; i++) {
+  //   if (i === selectedIndex) {
+  //     _strength[i].isSelected = !_strength[i].isSelected;
+  //   }
+  // }
 };
 
 const handleSubmit = () => {
   const formData = [lessonFieldOne.value, lessonFieldTwo.value];
-  console.log(formData);
+  console.log(formData)
 
-  const doc = new jsPDF();
+  const doc = new jsPDF()
 
-  doc.text(formData, 10, 10);
-  doc.save(`${lessonFieldOne.value}.pdf`);
+  doc.text(formData, 10, 10)
+  doc.save(`${lessonFieldOne.value}.pdf`)
 };
 </script>
 <template>
@@ -187,11 +191,12 @@ const handleSubmit = () => {
                   >
                   <input
                     type="text"
+                    v-model="firstName"
                     id="FirstName"
                     name="firstName"
                     required
                     class="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-500 dark:text-gray-400"
-                    placeholder=""
+                    placeholder="Enter First Name"
                   />
                 </div>
                 <div class="xl:w-1/4 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
@@ -202,11 +207,12 @@ const handleSubmit = () => {
                   >
                   <input
                     type="text"
+                    v-model="lastName"
                     id="LastName"
                     name="lastName"
                     required
                     class="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-500 dark:text-gray-400"
-                    placeholder=""
+                    placeholder="Enter Last Name"
                   />
                 </div>
                 <div class="xl:w-1/4 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
@@ -240,13 +246,14 @@ const handleSubmit = () => {
                       type="text"
                       id="Email"
                       name="email"
+                      v-model="email"
                       required
                       class="pl-3 py-3 w-full text-sm focus:outline-none placeholder-gray-500 rounded bg-transparent text-gray-500 dark:text-gray-400"
                       placeholder="example@gmail.com"
                     />
                   </div>
                   <div
-                    class="flex justify-between items-center pt-1 text-green-400"
+                    class="flex justify-between items-center pt-1 text-green-400 hidden"
                   >
                     <p class="text-xs">Email submission success!</p>
                     <svg

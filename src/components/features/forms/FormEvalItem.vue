@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from "vue";
-const checked = ref(false);
-// const checkedItemsReactive = reactive({});
+const checkedArray = ref([])
 
 // const emit = defineEmits([
 //   "onChecked",
@@ -15,7 +14,9 @@ const props = defineProps({
   strength: Object,
 });
 
+const checked = ref(props.strength.isSelected);
 
+// checkedArray.value.push(checked.value)
 // console.log(checkedItemsReactive);
 // console.log(props.strength);
 
