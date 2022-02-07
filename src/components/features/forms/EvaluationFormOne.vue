@@ -1,13 +1,5 @@
 <script setup>
-import {
-  ref,
-  reactive,
-  onMounted,
-  onBeforeUpdate,
-  watch,
-  watchEffect,
-  toRef,
-} from "vue";
+import { ref } from "vue";
 import { jsPDF } from "jspdf";
 import FormEvalItem from "./FormEvalItem.vue";
 import lessonData from "../../../data/lesson.json";
@@ -16,11 +8,66 @@ import teacherData from "../../../data/teacher.json";
 
 const lessonFieldOne = ref("");
 const lessonFieldTwo = ref("");
+const lessonArray = ref([]);
 
-const { strengths, weakness, wayForward } = lessonData;
-const { studentStrengths, studentWayForward, studentWeakness } = studentData;
-const { teacherStrengths, teacherWeakness, teacherWayForward } = teacherData;
+let { strengths, weakness, wayForward } = lessonData;
+let { studentStrengths, studentWayForward, studentWeakness } = studentData;
+let { teacherStrengths, teacherWeakness, teacherWayForward } = teacherData;
 
+const _strength = strengths.map((strength) => ({
+  ...strength,
+  isSelected: false,
+}));
+
+const _weakness = weakness.map((weakness) => ({
+  ...weakness,
+  isSelected: false,
+}));
+
+const _wayForward = wayForward.map((wayForward) => ({
+  ...wayForward,
+  isSelected: false,
+}));
+
+const _studentStrengths = studentStrengths.map((strength) => ({
+  ...strength,
+  isSelected: false,
+}));
+
+const _studentWeakness = studentWeakness.map((weakness) => ({
+  ...weakness,
+  isSelected: false,
+}));
+
+const _studentWayForward = studentWayForward.map((wayForward) => ({
+  ...wayForward,
+  isSelected: false,
+}));
+
+const _teacherStrengths = teacherStrengths.map((strength) => ({
+  ...strength,
+  isSelected: false,
+}));
+
+const _teacherWeakness = teacherWeakness.map((weakness) => ({
+  ...weakness,
+  isSelected: false,
+}));
+
+const _teacherWayForward = teacherWayForward.map((wayForward) => ({
+  ...wayForward,
+  isSelected: false,
+}));
+
+
+const onStrengthChecked = (selectedIndex) => {
+  console.log(selectedIndex);
+  for (let i = 0; i < _strength.length; i++) {
+    if (i === selectedIndex) {
+      _strength[i].isSelected = !_strength[i].isSelected;
+    }
+  }
+};
 
 const handleSubmit = () => {
   const formData = [lessonFieldOne.value, lessonFieldTwo.value];
@@ -289,9 +336,10 @@ const handleSubmit = () => {
             </div>
             <div class="px-8">
               <FormEvalItem
-                v-for="strength in strengths"
+                v-for="strength in _strength"
                 :key="strength"
                 :strength="strength"
+                @some-event="onStrengthChecked"
               />
             </div>
             <div class="xl:w-full py-5 px-8">
@@ -502,7 +550,7 @@ const handleSubmit = () => {
                     <p
                       class="text-lg text-gray-800 dark:text-gray-100 font-bold"
                     >
-                     Teacher Weakness
+                      Teacher Weakness
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
                       Please select choices based on the categories involving

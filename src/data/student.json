@@ -1,41 +1,91 @@
 {
   "studentStrengths": [
-    { "content": "learners were in a mood of readiness for learning" },
-    { "content": "new skills were practiced allowing students interaction and cooperation" },
+    { "id": 1,
+      "trait": "readiness",
+       "content": "learners were in a mood of readiness for learning" },
     {
+      "id": 2,
+      "trait": "confidence",
+      "content": "new skills were practiced allowing students interaction and cooperation"
+    },
+    {
+      "id": 3,
+      "trait": "motivation",
       "content": "lesson was student center"
     },
-    { "content": "opportunity was provided to recap what was taught and learned" },
-    { "content": "assessment activity was completed correctly and on time" },
-    { "content": "previous knowledge was demonstrated" }
+    {
+      "id": 4,
+      "trait": "leadership",
+      "content": "opportunity was provided to recap what was taught and learned"
+    },
+    { 
+      "id": 5,
+      "trait": "teamwork",
+      "content": "assessment activity was completed correctly and on time" },
+    { 
+      "id": 6,
+      "trait": "initiative",
+      "content": "previous knowledge was demonstrated" }
   ],
   "studentWeakness": [
-      { "content": "task were absent or purely skill base without connection through real-world application" },
-    { "content": "students were not able to interact and operate in pairs or groups" },
     {
+      "id": 1,
+      "trait": "absence",
+      "content": "task were absent or purely skill base without connection through real-world application"
+    },
+    {
+      "id": 2,
+      "trait": "inadequacy",
+      "content": "students were not able to interact and operate in pairs or groups"
+    },
+    {
+      "id": 3,
+      "trait": "monitored",
       "content": "individual or groups were not effectively monitored"
     },
     {
+      "id": 4,
+      "trait": "unmotivated",
       "content": "the more advanced learners were not challenged"
     },
     {
+      "id": 5,
+      "trait": "unresponsive",
       "content": "students were not able to complete activities correctly or within the specific time"
     },
     {
+      "id": 6,
+      "trait": "unorganized",
       "content": "previous knowledge was not demonstrated"
-    } 
+    }
   ],
   "studentWayForward": [
     {
+      "id": 1,
+      "trait": "learn",
       "content": "give one and one assistance the weaker students when applicable"
     },
-    { "content": "use cooperative group learning" },
-    { "content": "additional classes are required" },
+    { 
+      "id": 2,
+      "trait": "improve",
+      "content": "use cooperative group learning" },
+    { 
+      
+      "id": 3,
+      "trait": "teach",
+      "content": "additional classes are required" },
     {
+      "id": 4,
+      "trait": "reinforce",
       "content": "plan more activities to facilitate  advanced learners to keep them occupied and engaged plan"
     },
-    { "content": "activities to cater for slower students" },
+    { 
+      "id": 5,
+      "trait": "assist",
+      "content": "activities to cater for slower students" },
     {
+      "id": 6,
+      "trait": "supportive",
       "content": "ensure that the collection between activities and real-world application is set"
     }
   ]

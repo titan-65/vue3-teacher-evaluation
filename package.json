@@ -13,6 +13,7 @@
   "dependencies": {
     "jspdf": "^2.5.1",
     "pinia": "^2.0.11",
+    "uuid": "^8.3.2",
     "vue": "^3.2.29",
     "vue-router": "^4.0.12"
   },

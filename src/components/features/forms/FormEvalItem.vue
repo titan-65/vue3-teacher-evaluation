@@ -1,12 +1,23 @@
 <script setup>
-import { ref } from 'vue'
+import { ref } from "vue";
+const checked = ref(false);
+// const checkedItemsReactive = reactive({});
 
+// const emit = defineEmits([
+//   "onChecked",
+//   "onUnchecked",
+//   "onCheckedAll",
+//   "onUncheckedAll",
+//   "update:modelValue",
+// ]);
 const props = defineProps({
+  modelValue: String,
   strength: Object,
 });
 
-const checkedItems = ref([]);
 
+// console.log(checkedItemsReactive);
+// console.log(props.strength);
 
 </script>
 <template>
@@ -20,12 +31,15 @@ const checkedItems = ref([]);
     <div class="cursor-pointer rounded-full bg-gray-200 relative shadow-sm">
       <input
         type="checkbox"
-        name=""
-        id="toggle1"
+        :name="props.strength.trait"
+        :value="props.strength.content"
+        :id="props.strength.trait"
+        v-model="checked"
+        @change="$emit('someEvent', checked)"
         class="focus:outline-none checkbox w-6 h-6 rounded-full bg-white dark:bg-gray-400 absolute shadow-sm appearance-none cursor-pointer border border-transparent top-0 bottom-0 m-auto"
       />
       <label
-        for="toggle1"
+        :for="props.strength.trait"
         class="toggle-label block w-12 h-4 overflow-hidden rounded-full bg-gray-300 dark:bg-gray-800 cursor-pointer"
       ></label>
     </div>

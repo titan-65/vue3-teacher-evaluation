@@ -1,34 +1,70 @@
 {
   "teacherStrengths": [
     {
+      "id": "1",
+      "trait": "accountability",
       "content": "lesson went according to plan"
     },
     {
+      "id": "2",
+      "trait": "strataking",
       "content": "several teaching strategies to cater for all learners were utilized"
     },
-    { "content": "skills were broken down into a learnable part" },
+    { 
+      "id": "3",
+      "trait": "adaptability",
+      "content": "skills were broken down into a learnable part" },
     {
+      "id": "4",
+      "trait": "creativity",
       "content": "constructive feedback was provided for activities and skills being practiced"
     }
   ],
   "teacherWeakness": [
     {
+      "id": "1",
+      "trait": "class-teacher",
       "content": "teacher was adequately prepared for class"
     },
     {
+      "id": "2",
+      "trait": "class-management",
       "content": "teacher did not utilize resources well"
     },
-    { "content": "teacher did not cater for all learning style" },
-    { "content": "teacher was not effective in lesson delivery" },
-    { "content": "feedback was not constructive" },
-    { "content": "no feedback was offered to students" }
+    { 
+      "id": "3",
+      "trait": "learning-management",
+      "content": "teacher did not cater for all learning style" },
+    { 
+      "id": "4",
+      "trait": "teacher-effectiveness",
+      "content": "teacher was not effective in lesson delivery" },
+    { 
+      "id": "5",
+      "trait": "teacher-feedback",
+      "content": "feedback was not constructive" },
+    { 
+      "id": "6",
+      "trait": "teacher-students",
+      "content": "no feedback was offered to students" }
   ],
   "teacherWayForward": [
     {
+      "id": "1",
+      "trait": "teacher-watch",
       "content": "improve on lesson planning"
     },
-    { "content": "cater for differentiated learning" },
-    { "content": "reflect on lesson and no modifications in future lessons" },
-    { "content": "" }
+    { 
+      "id": "2",
+      "trait": "teacher-learn",
+      "content": "cater for differentiated learning" },
+    { 
+      "id": "3",
+      "trait": "teacher-practice",
+      "content": "reflect on lesson and no modifications in future lessons" },
+    { 
+      "id": "4",
+      "trait": "teacher-improve",
+      "content": "provide constant feedback in a timely manner or when needed" }
   ]
 }

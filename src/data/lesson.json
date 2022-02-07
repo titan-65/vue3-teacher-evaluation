@@ -1,46 +1,128 @@
 {
   "strengths": [
-    { "content": "the lesson started on time" },
-    { "content": "teaching method created two different styles" },
     {
+      "id": 1,
+      "trait": "time",
+      "content": "the lesson started on time"
+    },
+    {
+      "id": 2,
+      "trait": "styles",
+      "content": "teaching method created two different styles"
+    },
+    {
+      "id": 3,
+      "trait": "teaching",
       "content": "various instructional methods were identified and used in the lesson"
     },
-    { "content": "adequate resources were available" },
-    { "content": "students were actively involved during the lesson" },
-    { "content": "atmosphere was conducive to learning" },
-    { "content": "appropriate prerequisite skills were identified" },
-    { "content": "learning outcome objectives were met" },
     {
+      "id": 4,
+      "trait": "materials",
+      "content": "adequate resources were available"
+    },
+    {
+      "id": 5,
+      "trait": "teachers",
+      "content": "students were actively involved during the lesson"
+    },
+    {
+      "id": 6,
+      "trait": "students",
+      "content": "atmosphere was conducive to learning"
+    },
+    {
+      "id": 7,
+      "trait": "teaching",
+      "content": "appropriate prerequisite skills were identified"
+    },
+    {
+      "id": 8,
+      "trait": "objectives",
+      "content": "learning outcome objectives were met"
+    },
+    {
+      "id": 9,
+      "trait": "assessment",
       "content": "assessment provides the opportunity to demonstrate mastery of the skills taught"
     }
   ],
   "weakness": [
     {
+      "id": 1,
+      "trait": "discussion",
       "content": "the lesson did not go as planned as time ran out due to extended discussions enable students to grasp the concept"
     },
-    { "content": "lesson was often interrupted" },
-    { "content": "learning environment was not adequately prepared" },
     {
+      "id": 2,
+      "trait": "interruptions",
+      "content": "lesson was often interrupted"
+    },
+    {
+      "id": 3,
+      "trait": "environment",
+      "content": "learning environment was not adequately prepared"
+    },
+    {
+      "id": 4,
+      "trait": "activities",
       "content": "assessment activity did not measure what was practiced and taught"
     },
-    { "content": "no summary of the lesson or wrap up occurred" },
-    { "content": "objectives were missing" },
-    { "content": "objectives did not define what students would be able to do" }
+    {
+      "id": 5,
+      "trait": "summary",
+      "content": "no summary of the lesson or wrap up occurred"
+    },
+    {
+      "id": 6,
+      "trait": "missing",
+      "content": "objectives were missing"
+    },
+    {
+      "id": 7,
+      "trait": "define",
+      "content": "objectives did not define what students would be able to do"
+    }
   ],
   "wayForward": [
     {
+      "id": 1,
+      "trait": "involvement",
       "content": "modify content although more discussion and student involvement in lesson"
     },
     {
+      "id": 2,
+      "trait": "straightforward",
       "content": "incorporate other teaching learning strategies to make lesson more interesting"
     },
-    { "content": "utilize resource personnel where appropriate" },
-    { "content": "utilize the different assessment activities" },
-    { "content": "provide assessment activities for various learning styles" },
-    { "content": "summarize the lesson content" },
     {
+      "id": 3,
+      "trait": "resource-person",
+      "content": "utilize resource personnel where appropriate"
+    },
+    {
+      "id": 4,
+      "trait": "teaching-method",
+      "content": "utilize the different assessment activities"
+    },
+    {
+      "id": 5,
+      "trait": "learing-environment",
+      "content": "provide assessment activities for various learning styles"
+    },
+    {
+      "id": 6,
+      "trait": "summarize-content",
+      "content": "summarize the lesson content"
+    },
+    {
+      "id": 7,
+      "trait": "ensure-objectives",
       "content": "ensure objectives clearly states what student would be able to do at the end of the lesson"
     },
-    { "content": "plan lesson that incorporates use of fears resources" }
+    {
+      "id": 8,
+      "trait": "assessment-plan",
+      "content": "plan lesson that incorporates use of fears resources"
+    }
   ]
 }
