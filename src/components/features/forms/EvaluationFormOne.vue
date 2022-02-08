@@ -62,17 +62,19 @@ const _teacherWayForward = teacherWayForward.map((wayForward) => ({
 
 const onStrengthChecked = (selectedIndex) => {
   console.log(selectedIndex);
-  // lessonArray.value.push(selectedIndex);
-  for (let i = 0; i < _strength.length; i++) {
-    if (i === selectedIndex) {
-      _strength[i].isSelected = !_strength[i].isSelected;
-    } 
+  try {
+    _strength[selectedIndex].isSelected = !_strength[selectedIndex].isSelected;
+
+  } catch (e) {
+    console.error('invalid selection using index: ', selectedIndex);
   }
 
 };
 
 const handleSubmit = () => {
   const formData = [];
+
+  let selectedStrengths = _strength.fi
 
   console.log(formData);
 
@@ -344,10 +346,10 @@ const handleSubmit = () => {
             </div>
             <div class="px-8">
               <FormEvalItem
-                v-for="strength in _strength"
+                v-for="(strength, index) in _strength"
                 :key="strength"
                 :strength="strength"
-                @some-event="onStrengthChecked"
+                @some-event="() => onStrengthChecked(index)"
               />
             </div>
             <div class="xl:w-full py-5 px-8">
