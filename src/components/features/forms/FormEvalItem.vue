@@ -1,6 +1,18 @@
 <script setup>
 import { ref } from "vue";
+import { useFormStore } from "../../../stores/form";
+
+const store = useFormStore();
+
 const checkedArray = ref([])
+
+// store.checkedItems = checkedArray.value
+
+// forEach(item => {
+//   if (item.id === props.item.id) {
+//     checkedArray.value.push(item.id)
+//   }
+// })
 
 // const emit = defineEmits([
 //   "onChecked",

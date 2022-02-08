@@ -6,16 +6,16 @@ import lessonData from "../../../data/lesson.json";
 import studentData from "../../../data/student.json";
 import teacherData from "../../../data/teacher.json";
 
-const firstName = ref('');
-const lastName = ref('');
-const email = ref('')
+const firstName = ref("");
+const lastName = ref("");
+const email = ref("");
 const lessonArray = ref([]);
 
 let { strengths, weakness, wayForward } = lessonData;
 let { studentStrengths, studentWayForward, studentWeakness } = studentData;
 let { teacherStrengths, teacherWeakness, teacherWayForward } = teacherData;
 
-const _strength = strengths.map((strength) => ({
+let _strength = strengths.map((strength) => ({
   ...strength,
   isSelected: false,
 }));
@@ -60,27 +60,28 @@ const _teacherWayForward = teacherWayForward.map((wayForward) => ({
   isSelected: false,
 }));
 
-
 const onStrengthChecked = (selectedIndex) => {
   console.log(selectedIndex);
-
   // lessonArray.value.push(selectedIndex);
-  // console.log(lessonArray.value);
-  // for (let i = 0; i < _strength.length; i++) {
-  //   if (i === selectedIndex) {
-  //     _strength[i].isSelected = !_strength[i].isSelected;
-  //   }
-  // }
+  for (let i = 0; i < _strength.length; i++) {
+    if (i === selectedIndex) {
+      _strength[i].isSelected = !_strength[i].isSelected;
+    } 
+  }
+
 };
 
 const handleSubmit = () => {
-  const formData = [lessonFieldOne.value, lessonFieldTwo.value];
-  console.log(formData)
+  const formData = [];
 
-  const doc = new jsPDF()
+  console.log(formData);
 
-  doc.text(formData, 10, 10)
-  doc.save(`${lessonFieldOne.value}.pdf`)
+  const doc = new jsPDF();
+
+  doc.text(firstName.value, 10, 10);
+  doc.text(lastName.value, 10, 10);
+  doc.text(formData, 10, 10);
+  doc.save(``);
 };
 </script>
 <template>
