@@ -1,6 +1,7 @@
 <script setup>
 import EvalSidebar from "../components/EvalSidebar.vue";
 import EvalNavigation from "../components/EvalNavigation.vue";
+import MainFooter from "../components/MainFooter.vue";
 </script>
 <template>
   <div class="flex flex-no-wrap bg-white">
@@ -16,5 +17,5 @@ import EvalNavigation from "../components/EvalNavigation.vue";
       <slot />
     </div>
   </div>
-  <p>Footer Goes here</p>
+  <MainFooter />
 </template>

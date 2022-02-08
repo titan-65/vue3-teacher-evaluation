@@ -9,7 +9,7 @@ import teacherData from '../../../data/teacher.json'
 const firstName = ref('')
 const lastName = ref('')
 const email = ref('')
-const lessonArray = ref([])
+// const lessonArray = ref([])
 
 let { strengths, weakness, wayForward } = lessonData
 let { studentStrengths, studentWayForward, studentWeakness } = studentData
@@ -79,6 +79,11 @@ const onStrengthChecked = (selectedIndex) => {
 // checkAllData()
 
 const handleSubmit = () => {
+  const personalData = {
+    firstName: firstName.value,
+    lastName: lastName.value,
+    email: email.value,
+  }
   const formData = []
 
   let selectedStrengths = _strength.filter((strength) => strength.isSelected === true)
@@ -113,6 +118,34 @@ const handleSubmit = () => {
     formData.push(selectedWeakness[i].content)
   }
 
+  for (let i = 0; i < selectedWayForward.length; i++) {
+    formData.push(selectedWayForward[i].content)
+  }
+
+  for (let i = 0; i < selectedStudentStrengths.length; i++) {
+    formData.push(selectedStudentStrengths[i].content)
+  }
+
+  for (let i = 0; i < selectedStudentWeakness.length; i++) {
+    formData.push(selectedStudentWeakness[i].content)
+  }
+
+  for (let i = 0; i < selectedStudentWayForward.length; i++) {
+    formData.push(selectedStudentWayForward[i].content)
+  }
+
+  for (let i = 0; i < selectedTeacherStrengths.length; i++) {
+    formData.push(selectedTeacherStrengths[i].content)
+  }
+
+  for (let i = 0; i < selectedTeacherWeakness.length; i++) {
+    formData.push(selectedTeacherWeakness[i].content)
+  }
+
+  for (let i = 0; i < selectedTeacherWayForward.length; i++) {
+    formData.push(selectedTeacherWayForward[i].content)
+  }
+
   console.log(selectedStrengths)
   console.log(formData)
 
@@ -120,8 +153,9 @@ const handleSubmit = () => {
 
   doc.text(firstName.value, 10, 10)
   doc.text(lastName.value, 10, 10)
+  doc.text(email.value, 10, 10)
   doc.text(formData, 10, 10)
-  // doc.save(``)
+  doc.save(`${firstName.value} ${lastName.value} Evaluation.pdf`)
 }
 </script>
 <template>
