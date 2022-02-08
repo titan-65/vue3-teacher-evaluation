@@ -1,103 +1,139 @@
 <script setup>
-import { ref } from "vue";
-import { jsPDF } from "jspdf";
-import FormEvalItem from "./FormEvalItem.vue";
-import lessonData from "../../../data/lesson.json";
-import studentData from "../../../data/student.json";
-import teacherData from "../../../data/teacher.json";
+import { ref } from 'vue'
+import { jsPDF } from 'jspdf'
+import FormEvalItem from './FormEvalItem.vue'
+import lessonData from '../../../data/lesson.json'
+import studentData from '../../../data/student.json'
+import teacherData from '../../../data/teacher.json'
 
-const firstName = ref("");
-const lastName = ref("");
-const email = ref("");
-const lessonArray = ref([]);
+const firstName = ref('')
+const lastName = ref('')
+const email = ref('')
+const lessonArray = ref([])
 
-let { strengths, weakness, wayForward } = lessonData;
-let { studentStrengths, studentWayForward, studentWeakness } = studentData;
-let { teacherStrengths, teacherWeakness, teacherWayForward } = teacherData;
+let { strengths, weakness, wayForward } = lessonData
+let { studentStrengths, studentWayForward, studentWeakness } = studentData
+let { teacherStrengths, teacherWeakness, teacherWayForward } = teacherData
 
 let _strength = strengths.map((strength) => ({
   ...strength,
   isSelected: false,
-}));
+}))
 
 const _weakness = weakness.map((weakness) => ({
   ...weakness,
   isSelected: false,
-}));
+}))
 
 const _wayForward = wayForward.map((wayForward) => ({
   ...wayForward,
   isSelected: false,
-}));
+}))
 
 const _studentStrengths = studentStrengths.map((strength) => ({
   ...strength,
   isSelected: false,
-}));
+}))
 
 const _studentWeakness = studentWeakness.map((weakness) => ({
   ...weakness,
   isSelected: false,
-}));
+}))
 
 const _studentWayForward = studentWayForward.map((wayForward) => ({
   ...wayForward,
   isSelected: false,
-}));
+}))
 
 const _teacherStrengths = teacherStrengths.map((strength) => ({
   ...strength,
   isSelected: false,
-}));
+}))
 
 const _teacherWeakness = teacherWeakness.map((weakness) => ({
   ...weakness,
   isSelected: false,
-}));
+}))
 
 const _teacherWayForward = teacherWayForward.map((wayForward) => ({
   ...wayForward,
   isSelected: false,
-}));
+}))
 
 const onStrengthChecked = (selectedIndex) => {
-  console.log(selectedIndex);
+  console.log(selectedIndex)
   try {
-    _strength[selectedIndex].isSelected = !_strength[selectedIndex].isSelected;
-
+    _strength[selectedIndex].isSelected = !_strength[selectedIndex].isSelected
   } catch (e) {
-    console.error('invalid selection using index: ', selectedIndex);
+    console.error('invalid selection using index: ', selectedIndex)
   }
+}
 
-};
+// const checkAllData = () => {
+//   let newArray = []
+//   let selectedStr = _strength.filter((strength) => strength.isSelected === true)
+//   newArray.push(selectedStr)
+//   console.log(newArray)
+// }
+
+// checkAllData()
 
 const handleSubmit = () => {
-  const formData = [];
+  const formData = []
 
-  let selectedStrengths = _strength.fi
+  let selectedStrengths = _strength.filter((strength) => strength.isSelected === true)
+  let selectedWeakness = _weakness.filter((weakness) => weakness.isSelected === true)
+  let selectedWayForward = _wayForward.filter(
+    (wayForward) => wayForward.isSelected === true
+  )
+  let selectedStudentStrengths = _studentStrengths.filter(
+    (strength) => strength.isSelected === true
+  )
+  let selectedStudentWeakness = _studentWeakness.filter(
+    (weakness) => weakness.isSelected === true
+  )
+  let selectedStudentWayForward = _studentWayForward.filter(
+    (wayForward) => wayForward.isSelected === true
+  )
+  let selectedTeacherStrengths = _teacherStrengths.filter(
+    (strength) => strength.isSelected === true
+  )
+  let selectedTeacherWeakness = _teacherWeakness.filter(
+    (weakness) => weakness.isSelected === true
+  )
+  let selectedTeacherWayForward = _teacherWayForward.filter(
+    (wayForward) => wayForward.isSelected === true
+  )
 
-  console.log(formData);
+  for (let i = 0; i < selectedStrengths.length; i++) {
+    formData.push(selectedStrengths[i].content)
+  }
 
-  const doc = new jsPDF();
+  for (let i = 0; i < selectedWeakness.length; i++) {
+    formData.push(selectedWeakness[i].content)
+  }
 
-  doc.text(firstName.value, 10, 10);
-  doc.text(lastName.value, 10, 10);
-  doc.text(formData, 10, 10);
-  doc.save(``);
-};
+  console.log(selectedStrengths)
+  console.log(formData)
+
+  const doc = new jsPDF()
+
+  doc.text(firstName.value, 10, 10)
+  doc.text(lastName.value, 10, 10)
+  doc.text(formData, 10, 10)
+  // doc.save(``)
+}
 </script>
 <template>
   <div class="bg-gray-200 py-10">
-    <form id="login" @submit.prevent>
+    <form id="login" @submit.prevent="handleSubmit">
       <div class="bg-white dark:bg-gray-800">
         <div class="container mx-auto bg-white dark:bg-gray-800 rounded">
           <div
             class="xl:w-full border-b border-gray-300 dark:border-gray-700 py-5 bg-white dark:bg-gray-800"
           >
             <div class="flex w-11/12 mx-auto xl:w-full xl:mx-0 items-center">
-              <p class="text-lg text-gray-800 dark:text-gray-100 font-bold">
-                Profile
-              </p>
+              <p class="text-lg text-gray-800 dark:text-gray-100 font-bold">Profile</p>
               <div class="ml-2 cursor-pointer text-gray-600 dark:text-gray-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -146,9 +182,7 @@ const handleSubmit = () => {
                       <path
                         d="M9 7 h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3"
                       />
-                      <path
-                        d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3"
-                      />
+                      <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
                       <line x1="16" y1="5" x2="19" y2="8" />
                     </svg>
                   </div>
@@ -157,12 +191,8 @@ const handleSubmit = () => {
             </div>
           </div>
         </div>
-        <div
-          class="container mx-auto bg-white dark:bg-gray-800 mt-10 rounded px-4"
-        >
-          <div
-            class="xl:w-full border-b border-gray-300 dark:border-gray-700 py-5"
-          >
+        <div class="container mx-auto bg-white dark:bg-gray-800 mt-10 rounded px-4">
+          <div class="xl:w-full border-b border-gray-300 dark:border-gray-700 py-5">
             <div class="flex w-11/12 mx-auto xl:w-full xl:mx-0 items-center">
               <p class="text-lg text-gray-800 dark:text-gray-100 font-bold">
                 Personal Information
@@ -293,9 +323,9 @@ const handleSubmit = () => {
                     Evaulation Choices
                   </p>
                   <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
-                    Please select choices based on the categories involving
-                    Lesson, Student, and Teacher. Categories highlights the
-                    strength, weakness, and way forward your lesson.
+                    Please select choices based on the categories involving Lesson,
+                    Student, and Teacher. Categories highlights the strength, weakness,
+                    and way forward your lesson.
                   </p>
                 </div>
               </div>
@@ -321,9 +351,7 @@ const handleSubmit = () => {
                 <rect x="3" y="5" width="18" height="14" rx="2" />
                 <polyline points="3 7 12 13 21 7" />
               </svg>
-              <p
-                class="text-xl font-bold ml-2 text-gray-800 dark:text-gray-100"
-              >
+              <p class="text-xl font-bold ml-2 text-gray-800 dark:text-gray-100">
                 Lesson
               </p>
             </div>
@@ -331,14 +359,11 @@ const handleSubmit = () => {
               <div class="flex items-center mx-auto">
                 <div class="container mx-auto">
                   <div class="mx-auto xl:w-full">
-                    <p
-                      class="text-sm text-gray-800 dark:text-gray-100 font-bold"
-                    >
+                    <p class="text-sm text-gray-800 dark:text-gray-100 font-bold">
                       Lesson Strengths
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
-                      Please select choices based on the categories involving
-                      Lesson.
+                      Please select choices based on the categories involving Lesson.
                     </p>
                   </div>
                 </div>
@@ -356,14 +381,11 @@ const handleSubmit = () => {
               <div class="flex items-center mx-auto">
                 <div class="container mx-auto">
                   <div class="mx-auto xl:w-full">
-                    <p
-                      class="text-lg text-gray-800 dark:text-gray-100 font-bold"
-                    >
+                    <p class="text-lg text-gray-800 dark:text-gray-100 font-bold">
                       Lesson Weakness
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
-                      Please select choices based on the categories involving
-                      Lesson.
+                      Please select choices based on the categories involving Lesson.
                     </p>
                   </div>
                 </div>
@@ -371,23 +393,21 @@ const handleSubmit = () => {
             </div>
             <div class="px-8">
               <FormEvalItem
-                v-for="evaluate in weakness"
+                v-for="(evaluate, index) in _weakness"
                 :key="evaluate"
                 :strength="evaluate"
+                @some-event="() => onStrengthChecked(index)"
               />
             </div>
             <div class="xl:w-full py-5 px-8">
               <div class="flex items-center mx-auto">
                 <div class="container mx-auto">
                   <div class="mx-auto xl:w-full">
-                    <p
-                      class="text-lg text-gray-800 dark:text-gray-100 font-bold"
-                    >
+                    <p class="text-lg text-gray-800 dark:text-gray-100 font-bold">
                       Lesson Way Forward
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
-                      Please select choices based on the categories involving
-                      Lesson.
+                      Please select choices based on the categories involving Lesson.
                     </p>
                   </div>
                 </div>
@@ -395,9 +415,10 @@ const handleSubmit = () => {
             </div>
             <div class="px-8">
               <FormEvalItem
-                v-for="evaluate in wayForward"
+                v-for="(evaluate, index) in _wayForward"
                 :key="evaluate"
                 :strength="evaluate"
+                @some-event="() => onStrengthChecked(index)"
               />
             </div>
           </div>
@@ -422,9 +443,7 @@ const handleSubmit = () => {
                 <rect x="3" y="5" width="18" height="14" rx="2" />
                 <polyline points="3 7 12 13 21 7" />
               </svg>
-              <p
-                class="text-sm font-bold ml-2 text-gray-800 dark:text-gray-100"
-              >
+              <p class="text-sm font-bold ml-2 text-gray-800 dark:text-gray-100">
                 Student
               </p>
             </div>
@@ -432,14 +451,11 @@ const handleSubmit = () => {
               <div class="flex items-center mx-auto">
                 <div class="container mx-auto">
                   <div class="mx-auto xl:w-full">
-                    <p
-                      class="text-lg text-gray-800 dark:text-gray-100 font-bold"
-                    >
+                    <p class="text-lg text-gray-800 dark:text-gray-100 font-bold">
                       Student Strengths
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
-                      Please select choices based on the categories involving
-                      Lesson.
+                      Please select choices based on the categories involving Lesson.
                     </p>
                   </div>
                 </div>
@@ -447,23 +463,21 @@ const handleSubmit = () => {
             </div>
             <div class="px-8">
               <FormEvalItem
-                v-for="studentEval in studentStrengths"
+                v-for="(studentEval, index) in _studentStrengths"
                 :key="studentEval"
                 :strength="studentEval"
+                @some-event="() => onStrengthChecked(index)"
               />
             </div>
             <div class="xl:w-full py-5 px-8">
               <div class="flex items-center mx-auto">
                 <div class="container mx-auto">
                   <div class="mx-auto xl:w-full">
-                    <p
-                      class="text-lg text-gray-800 dark:text-gray-100 font-bold"
-                    >
+                    <p class="text-lg text-gray-800 dark:text-gray-100 font-bold">
                       Student Weakness
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
-                      Please select choices based on the categories involving
-                      Lesson.
+                      Please select choices based on the categories involving Lesson.
                     </p>
                   </div>
                 </div>
@@ -471,23 +485,21 @@ const handleSubmit = () => {
             </div>
             <div class="px-8">
               <FormEvalItem
-                v-for="studentEval in studentWeakness"
+                v-for="(studentEval, index) in _studentWeakness"
                 :key="studentEval"
                 :strength="studentEval"
+                @some-event="() => onStrengthChecked(index)"
               />
             </div>
             <div class="xl:w-full py-5 px-8">
               <div class="flex items-center mx-auto">
                 <div class="container mx-auto">
                   <div class="mx-auto xl:w-full">
-                    <p
-                      class="text-lg text-gray-800 dark:text-gray-100 font-bold"
-                    >
+                    <p class="text-lg text-gray-800 dark:text-gray-100 font-bold">
                       Student WayForward
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
-                      Please select choices based on the categories involving
-                      Lesson.
+                      Please select choices based on the categories involving Lesson.
                     </p>
                   </div>
                 </div>
@@ -495,9 +507,10 @@ const handleSubmit = () => {
             </div>
             <div class="px-8">
               <FormEvalItem
-                v-for="studentEval in studentWayForward"
+                v-for="(studentEval, index) in _studentWayForward"
                 :key="studentEval"
                 :strength="studentEval"
+                @some-event="() => onStrengthChecked(index)"
               />
             </div>
           </div>
@@ -523,9 +536,7 @@ const handleSubmit = () => {
                 <rect x="3" y="5" width="18" height="14" rx="2" />
                 <polyline points="3 7 12 13 21 7" />
               </svg>
-              <p
-                class="text-sm font-bold ml-2 text-gray-800 dark:text-gray-100"
-              >
+              <p class="text-sm font-bold ml-2 text-gray-800 dark:text-gray-100">
                 Teacher
               </p>
             </div>
@@ -533,14 +544,11 @@ const handleSubmit = () => {
               <div class="flex items-center mx-auto">
                 <div class="container mx-auto">
                   <div class="mx-auto xl:w-full">
-                    <p
-                      class="text-lg text-gray-800 dark:text-gray-100 font-bold"
-                    >
+                    <p class="text-lg text-gray-800 dark:text-gray-100 font-bold">
                       Teacher Strengths
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
-                      Please select choices based on the categories involving
-                      Lesson.
+                      Please select choices based on the categories involving Lesson.
                     </p>
                   </div>
                 </div>
@@ -548,23 +556,21 @@ const handleSubmit = () => {
             </div>
             <div class="px-8">
               <FormEvalItem
-                v-for="teacherEval in teacherStrengths"
+                v-for="(teacherEval, index) in _teacherStrengths"
                 :key="teacherEval"
                 :strength="teacherEval"
+                @some-event="() => onStrengthChecked(index)"
               />
             </div>
             <div class="xl:w-full py-5 px-8">
               <div class="flex items-center mx-auto">
                 <div class="container mx-auto">
                   <div class="mx-auto xl:w-full">
-                    <p
-                      class="text-lg text-gray-800 dark:text-gray-100 font-bold"
-                    >
+                    <p class="text-lg text-gray-800 dark:text-gray-100 font-bold">
                       Teacher Weakness
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
-                      Please select choices based on the categories involving
-                      Lesson.
+                      Please select choices based on the categories involving Lesson.
                     </p>
                   </div>
                 </div>
@@ -572,23 +578,21 @@ const handleSubmit = () => {
             </div>
             <div class="px-8">
               <FormEvalItem
-                v-for="teacherEval in teacherWeakness"
+                v-for="(teacherEval, index) in _teacherWeakness"
                 :key="teacherEval"
                 :strength="teacherEval"
+                @some-event="() => onStrengthChecked(index)"
               />
             </div>
             <div class="xl:w-full py-5 px-8">
               <div class="flex items-center mx-auto">
                 <div class="container mx-auto">
                   <div class="mx-auto xl:w-full">
-                    <p
-                      class="text-lg text-gray-800 dark:text-gray-100 font-bold"
-                    >
+                    <p class="text-lg text-gray-800 dark:text-gray-100 font-bold">
                       Teacher WayForward
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
-                      Please select choices based on the categories involving
-                      Lesson.
+                      Please select choices based on the categories involving Lesson.
                     </p>
                   </div>
                 </div>
@@ -596,18 +600,17 @@ const handleSubmit = () => {
             </div>
             <div class="px-8">
               <FormEvalItem
-                v-for="teacherEval in teacherWayForward"
+                v-for="(teacherEval, index) in _teacherWayForward"
                 :key="teacherEval"
                 :strength="teacherEval"
+                @some-event="() => onStrengthChecked(index)"
               />
             </div>
           </div>
           <!-- Teacher Ends Here -->
         </div>
         <div class="container mx-auto w-11/12 xl:w-full">
-          <div
-            class="w-full py-4 sm:px-0 bg-white dark:bg-gray-800 flex justify-end"
-          >
+          <div class="w-full py-4 sm:px-0 bg-white dark:bg-gray-800 flex justify-end">
             <button
               class="bg-gray-200 focus:outline-none transition duration-150 ease-in-out hover:bg-gray-300 dark:bg-gray-700 rounded text-indigo-600 dark:text-indigo-600 px-6 py-2 text-xs mr-4"
             >
