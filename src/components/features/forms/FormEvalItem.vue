@@ -34,10 +34,10 @@ const checked = ref(props.strength.isSelected);
 
 </script>
 <template>
-  <div class="flex justify-between items-center mb-8 mt-4">
+  <div class="flex justify-between items-center mb-8 mt-4 border-b">
     <div class="w-9/12">
-      <p class="text-sm text-gray-800 dark:text-gray-100 pb-1">Strength</p>
-      <p class="text-sm text-gray-500 dark:text-gray-400">
+      <p class="text-sm text-gray-800 dark:text-gray-100 pb-1">{{ props.strength.trait }}</p>
+      <p class="text-xl text-gray-500 dark:text-gray-400">
         {{ props.strength.content }}
       </p>
     </div>

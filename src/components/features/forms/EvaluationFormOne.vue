@@ -9,6 +9,7 @@ import teacherData from '../../../data/teacher.json'
 const firstName = ref('')
 const lastName = ref('')
 const email = ref('')
+const className = ref('')
 // const lessonArray = ref([])
 
 let { strengths, weakness, wayForward } = lessonData
@@ -151,15 +152,18 @@ const handleSubmit = () => {
 
   const doc = new jsPDF()
 
-  doc.text(firstName.value, 10, 10)
-  doc.text(lastName.value, 10, 10)
-  doc.text(email.value, 10, 10)
+  doc.text(`Name: ${firstName.value} ${lastName.value}`, 10, 10)
+  doc.text(`Email: ${email.value}`, 10, 10)
+  doc.text(className.value, 10, 10)
+
+  doc.setLineWidth(0.5)
+  doc.line(10, 20, 200, 20)
   doc.text(formData, 10, 10)
   doc.save(`${firstName.value} ${lastName.value} Evaluation.pdf`)
 }
 </script>
 <template>
-  <div class="bg-gray-200 py-10">
+  <div class="bg-gray-200">
     <form id="login" @submit.prevent="handleSubmit">
       <div class="bg-white dark:bg-gray-800">
         <div class="container mx-auto bg-white dark:bg-gray-800 rounded">
@@ -167,7 +171,9 @@ const handleSubmit = () => {
             class="xl:w-full border-b border-gray-300 dark:border-gray-700 py-5 bg-white dark:bg-gray-800"
           >
             <div class="flex w-11/12 mx-auto xl:w-full xl:mx-0 items-center">
-              <p class="text-lg text-gray-800 dark:text-gray-100 font-bold">Profile</p>
+              <p class="text-lg text-gray-800 dark:text-gray-100 font-bold">
+                Teacher Evaluation
+              </p>
               <div class="ml-2 cursor-pointer text-gray-600 dark:text-gray-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -229,7 +235,7 @@ const handleSubmit = () => {
           <div class="xl:w-full border-b border-gray-300 dark:border-gray-700 py-5">
             <div class="flex w-11/12 mx-auto xl:w-full xl:mx-0 items-center">
               <p class="text-lg text-gray-800 dark:text-gray-100 font-bold">
-                Personal Information
+                Teacher and Class Information
               </p>
               <div class="ml-2 cursor-pointer text-gray-600 dark:text-gray-400">
                 <svg
@@ -342,6 +348,40 @@ const handleSubmit = () => {
                     </svg>
                   </div>
                 </div>
+                <div class="flex flex-row">
+                  <div class="xl:w-1/4 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
+                    <label
+                      for="FirstName"
+                      class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100"
+                      >School</label
+                    >
+                    <input
+                      type="text"
+                      v-model="schoolName"
+                      id="schoolName"
+                      name="schoolName"
+                      required
+                      class="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-500 dark:text-gray-400"
+                      placeholder="Enter Name of School"
+                    />
+                  </div>
+                  <div class="xl:w-1/4 lg:w-1/2 md:w-1/2 flex flex-col mb-6 pl-5">
+                    <label
+                      for="FirstName"
+                      class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100"
+                      >Class</label
+                    >
+                    <input
+                      type="text"
+                      v-model="className"
+                      id="className"
+                      name="className"
+                      required
+                      class="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-500 dark:text-gray-400"
+                      placeholder="Enter Name of Class"
+                    />
+                  </div>
+                </div>
               </form>
             </div>
           </div>
@@ -349,14 +389,14 @@ const handleSubmit = () => {
         <div
           class="container mx-auto mt-10 rounded bg-gray-100 dark:bg-gray-700 w-11/12 xl:w-full"
         >
-          <div class="xl:w-full py-5 px-8">
+          <div class="xl:w-full py-5 px-8 bg-orange-600">
             <div class="flex items-center mx-auto">
               <div class="container mx-auto">
                 <div class="mx-auto xl:w-full">
-                  <p class="text-lg text-gray-800 dark:text-gray-100 font-bold">
+                  <p class="text-lg text-white dark:text-gray-100 font-bold">
                     Evaulation Choices
                   </p>
-                  <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
+                  <p class="text-sm text-white dark:text-gray-400 pt-1">
                     Please select choices based on the categories involving Lesson,
                     Student, and Teacher. Categories highlights the strength, weakness,
                     and way forward your lesson.
@@ -367,7 +407,7 @@ const handleSubmit = () => {
           </div>
           <div class="container mx-auto pb-6">
             <div
-              class="flex items-center pb-4 border-b border-gray-300 dark:border-gray-700 px-8 text-gray-800 dark:text-gray-100"
+              class="flex items-center pb-4 border-b bg-sky-500 border-gray-300 dark:border-gray-700 px-8 text-gray-800 dark:text-gray-100"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -411,7 +451,7 @@ const handleSubmit = () => {
                 @some-event="() => onStrengthChecked(index)"
               />
             </div>
-            <div class="xl:w-full py-5 px-8">
+            <div class="xl:w-full py-5 px-8 bg-white">
               <div class="flex items-center mx-auto">
                 <div class="container mx-auto">
                   <div class="mx-auto xl:w-full">
@@ -433,7 +473,7 @@ const handleSubmit = () => {
                 @some-event="() => onStrengthChecked(index)"
               />
             </div>
-            <div class="xl:w-full py-5 px-8">
+            <div class="xl:w-full py-5 px-8 bg-white">
               <div class="flex items-center mx-auto">
                 <div class="container mx-auto">
                   <div class="mx-auto xl:w-full">

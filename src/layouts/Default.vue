@@ -1,7 +1,8 @@
 <script setup>
 import EvalSidebar from "../components/EvalSidebar.vue";
-import EvalNavigation from "../components/EvalNavigation.vue";
+// import EvalNavigation from "../components/EvalNavigation.vue";
 import MainFooter from "../components/MainFooter.vue";
+import NaviHeader from "../components/NaviHeader.vue";
 </script>
 <template>
   <div class="flex flex-no-wrap bg-white">
@@ -11,7 +12,7 @@ import MainFooter from "../components/MainFooter.vue";
     <!-- Sidebar ends -->
     <div class="w-full">
       <!-- Navigation starts -->
-      <EvalNavigation />
+      <NaviHeader />
       <!-- Navigation ends -->
       <!-- Remove class [ h-64 ] when adding a card block -->
       <slot />
