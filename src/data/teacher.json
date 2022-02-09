@@ -1,69 +1,69 @@
 {
   "teacherStrengths": [
     {
-      "id": "1",
+      "id": 43,
       "trait": "accountability",
       "content": "lesson went according to plan"
     },
     {
-      "id": "2",
+      "id": 44,
       "trait": "strataking",
       "content": "several teaching strategies to cater for all learners were utilized"
     },
     { 
-      "id": "3",
+      "id": 45,
       "trait": "adaptability",
       "content": "skills were broken down into a learnable part" },
     {
-      "id": "4",
+      "id": 46,
       "trait": "creativity",
       "content": "constructive feedback was provided for activities and skills being practiced"
     }
   ],
   "teacherWeakness": [
     {
-      "id": "1",
+      "id": 47,
       "trait": "class-teacher",
       "content": "teacher was adequately prepared for class"
     },
     {
-      "id": "2",
+      "id": 48,
       "trait": "class-management",
       "content": "teacher did not utilize resources well"
     },
     { 
-      "id": "3",
+      "id": 49,
       "trait": "learning-management",
       "content": "teacher did not cater for all learning style" },
     { 
-      "id": "4",
+      "id": 50,
       "trait": "teacher-effectiveness",
       "content": "teacher was not effective in lesson delivery" },
     { 
-      "id": "5",
+      "id": 51,
       "trait": "teacher-feedback",
       "content": "feedback was not constructive" },
     { 
-      "id": "6",
+      "id": 52,
       "trait": "teacher-students",
       "content": "no feedback was offered to students" }
   ],
   "teacherWayForward": [
     {
-      "id": "1",
+      "id": 53,
       "trait": "teacher-watch",
       "content": "improve on lesson planning"
     },
     { 
-      "id": "2",
+      "id": 54,
       "trait": "teacher-learn",
       "content": "cater for differentiated learning" },
     { 
-      "id": "3",
+      "id": 55,
       "trait": "teacher-practice",
       "content": "reflect on lesson and no modifications in future lessons" },
     { 
-      "id": "4",
+      "id": 56,
       "trait": "teacher-improve",
       "content": "provide constant feedback in a timely manner or when needed" }
   ]

@@ -8,7 +8,9 @@ import NaviHeader from "../components/NaviHeader.vue";
   <div class="flex flex-no-wrap bg-white">
     <!-- Sidebar starts -->
     <!-- Remove class [ hidden ] and replace [ sm:flex ] with [ flex ] -->
-    <EvalSidebar />
+    <div class="hidden">
+      <EvalSidebar />
+    </div>
     <!-- Sidebar ends -->
     <div class="w-full">
       <!-- Navigation starts -->

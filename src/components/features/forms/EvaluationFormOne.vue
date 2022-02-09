@@ -10,7 +10,8 @@ const firstName = ref('')
 const lastName = ref('')
 const email = ref('')
 const className = ref('')
-// const lessonArray = ref([])
+const schoolName = ref('')
+
 
 let { strengths, weakness, wayForward } = lessonData
 let { studentStrengths, studentWayForward, studentWeakness } = studentData
@@ -85,7 +86,10 @@ const handleSubmit = () => {
     lastName: lastName.value,
     email: email.value,
   }
-  const formData = []
+
+  const lessonData = []
+  const studentData = []
+  const teacherData = []
 
   let selectedStrengths = _strength.filter((strength) => strength.isSelected === true)
   let selectedWeakness = _weakness.filter((weakness) => weakness.isSelected === true)
@@ -112,54 +116,83 @@ const handleSubmit = () => {
   )
 
   for (let i = 0; i < selectedStrengths.length; i++) {
-    formData.push(selectedStrengths[i].content)
+    lessonData.push(selectedStrengths[i].content)
   }
 
   for (let i = 0; i < selectedWeakness.length; i++) {
-    formData.push(selectedWeakness[i].content)
+    lessonData.push(selectedWeakness[i].content)
   }
 
   for (let i = 0; i < selectedWayForward.length; i++) {
-    formData.push(selectedWayForward[i].content)
+    lessonData.push(selectedWayForward[i].content)
   }
 
   for (let i = 0; i < selectedStudentStrengths.length; i++) {
-    formData.push(selectedStudentStrengths[i].content)
+    studentData.push(selectedStudentStrengths[i].content)
   }
 
   for (let i = 0; i < selectedStudentWeakness.length; i++) {
-    formData.push(selectedStudentWeakness[i].content)
+    studentData.push(selectedStudentWeakness[i].content)
   }
 
   for (let i = 0; i < selectedStudentWayForward.length; i++) {
-    formData.push(selectedStudentWayForward[i].content)
+    studentData.push(selectedStudentWayForward[i].content)
   }
 
   for (let i = 0; i < selectedTeacherStrengths.length; i++) {
-    formData.push(selectedTeacherStrengths[i].content)
+    studentData.push(selectedTeacherStrengths[i].content)
   }
 
   for (let i = 0; i < selectedTeacherWeakness.length; i++) {
-    formData.push(selectedTeacherWeakness[i].content)
+    studentData.push(selectedTeacherWeakness[i].content)
   }
 
   for (let i = 0; i < selectedTeacherWayForward.length; i++) {
-    formData.push(selectedTeacherWayForward[i].content)
+    studentData.push(selectedTeacherWayForward[i].content)
   }
 
-  console.log(selectedStrengths)
-  console.log(formData)
+  // console.log(selectedStrengths)
+  console.log(lessonData)
+  console.log(studentData)
+  console.log(teacherData)
+
+  if (!firstName.value || !lastName.value || !schoolName.value) {
+    alert('Please fill in all fields in the school information section')
+    return
+  }
 
   const doc = new jsPDF()
 
+  doc.setFontSize(22)
+  doc.text(schoolName.value, 105, 80, null, null, 'center')
+
+  doc.setFontSize(16)
   doc.text(`Name: ${firstName.value} ${lastName.value}`, 10, 10)
   doc.text(`Email: ${email.value}`, 10, 10)
   doc.text(className.value, 10, 10)
 
   doc.setLineWidth(0.5)
   doc.line(10, 20, 200, 20)
-  doc.text(formData, 10, 10)
-  doc.save(`${firstName.value} ${lastName.value} Evaluation.pdf`)
+
+  doc.setFontSize(16)
+  doc.text('Lesson', 10, 30)
+  doc.text(lessonData, 40, 10)
+
+  doc.setLineWidth(0.5)
+  doc.line(10, 40, 200, 40)
+
+  doc.setFontSize(16)
+  doc.text('Student', 10, 50)
+  doc.text(studentData, 40, 10)
+
+  doc.setLineWidth(0.5)
+  doc.line(10, 60, 200, 60)
+
+  doc.setFontSize(16)
+  doc.text('Teacher', 10, 70)
+  doc.text(teacherData, 40, 10)
+
+  doc.save(`${className.value} -${firstName.value} ${lastName.value} - Evaluation.pdf`)
 }
 </script>
 <template>

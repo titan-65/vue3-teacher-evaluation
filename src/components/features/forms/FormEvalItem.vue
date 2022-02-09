@@ -48,7 +48,7 @@ const checked = ref(props.strength.isSelected);
         :value="props.strength.content"
         :id="props.strength.trait"
         v-model="checked"
-        @change="$emit('someEvent', checked)"
+        @change="$emit('someEvent', props.strength.id)"
         class="focus:outline-none checkbox w-6 h-6 rounded-full bg-white dark:bg-gray-400 absolute shadow-sm appearance-none cursor-pointer border border-transparent top-0 bottom-0 m-auto"
       />
       <label
