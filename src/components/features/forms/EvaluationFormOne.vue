@@ -157,6 +157,33 @@ const onTeacherWayForwardChecked = (selectedIndex) => {
 // }
 
 // checkAllData()
+const showTooltip = (flag) => {
+  switch (flag) {
+    case 1:
+      document.getElementById('tooltip1').classList.remove('opacity-0')
+      break
+    case 2:
+      document.getElementById('tooltip2').classList.remove('opacity-0')
+      break
+    case 3:
+      document.getElementById('tooltip3').classList.remove('opacity-0')
+      break
+  }
+}
+
+const hideTooltip = (flag) => {
+  switch (flag) {
+    case 1:
+      document.getElementById('tooltip1').classList.add('opacity-0')
+      break
+    case 2:
+      document.getElementById('tooltip2').classList.add('opacity-0')
+      break
+    case 3:
+      document.getElementById('tooltip3').classList.add('opacity-0')
+      break
+  }
+}
 
 const handleSubmit = () => {
   const personalData = {
@@ -254,7 +281,6 @@ const handleSubmit = () => {
   doc.text(`Class: ${className.value}`, 10, 40)
   doc.text(`Lesson Title/Topic: ${className.value}`, 10, 50)
 
-
   doc.setLineWidth(0.5)
   doc.line(10, 55, 200, 55)
 
@@ -285,7 +311,6 @@ const handleSubmit = () => {
   doc.text(`Lesson Title/Topic: ${className.value}`, 10, 50)
   doc.text(`Date: ${today}`, 10, 60)
 
-
   doc.setLineWidth(0.5)
   doc.line(10, 55, 200, 65)
 
@@ -306,7 +331,6 @@ const handleSubmit = () => {
   doc.text(`Email: ${email.value}`, 10, 30)
   doc.text(`Class: ${className.value}`, 10, 40)
   doc.text(`Lesson Title/Topic: ${className.value}`, 10, 50)
-
 
   doc.setLineWidth(0.5)
   doc.line(10, 55, 200, 55)
@@ -347,6 +371,95 @@ const handleSubmit = () => {
                     fill="currentColor"
                   />
                 </svg>
+              </div>
+              <div
+                class="relative mt-20 md:mt-0"
+                @mouseover="showTooltip(1)"
+                @mouseout="hideTooltip(1)"
+              >
+                <div class="mr-2 cursor-pointer">
+                  <svg
+                    aria-haspopup="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-info-circle"
+                    width="25"
+                    height="25"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="#A0AEC0"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <circle cx="12" cy="12" r="9" />
+                    <line x1="12" y1="8" x2="12.01" y2="8" />
+                    <polyline points="11 12 12 12 12 16 13 16" />
+                  </svg>
+                </div>
+                <div
+                  id="tooltip1"
+                  role="tooltip"
+                  class="z-20 -mt-20 w-64 absolute transition duration-150 ease-in-out left-0 ml-8 shadow-lg bg-white p-4 rounded"
+                >
+                  <svg
+                    class="absolute left-0 -ml-2 bottom-0 top-0 h-full"
+                    width="9px"
+                    height="16px"
+                    viewBox="0 0 9 16"
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                  >
+                    <g
+                      id="Page-1"
+                      stroke="none"
+                      stroke-width="1"
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <g
+                        id="Tooltips-"
+                        transform="translate(-874.000000, -1029.000000)"
+                        fill="#FFFFFF"
+                      >
+                        <g
+                          id="Group-3-Copy-16"
+                          transform="translate(850.000000, 975.000000)"
+                        >
+                          <g id="Group-2" transform="translate(24.000000, 0.000000)">
+                            <polygon
+                              id="Triangle"
+                              transform="translate(4.500000, 62.000000) rotate(-90.000000) translate(-4.500000, -62.000000) "
+                              points="4.5 57.5 12.5 66.5 -3.5 66.5"
+                            ></polygon>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                  <p class="text-sm font-bold text-gray-800 pb-1">
+                    Keep track of follow ups
+                  </p>
+                  <p class="text-xs leading-4 text-gray-600 pb-3">
+                    Reach out to more prospects at the right moment.
+                  </p>
+                  <div class="flex justify-between">
+                    <div class="flex items-center">
+                      <span class="text-xs font-bold text-indigo-700">Step 1 of 4</span>
+                    </div>
+                    <div class="flex items-center">
+                      <span class="text-xs text-gray-600 underline mr-2 cursor-pointer"
+                        >Skip Tour</span
+                      >
+                      <button
+                        class="focus:outline-none bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 rounded text-white px-5 py-1 text-xs"
+                      >
+                        Next
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -543,21 +656,21 @@ const handleSubmit = () => {
                   </div>
                 </div>
                 <div class="xl:w-1/4 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
-                    <label
-                      for="FirstName"
-                      class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100"
-                      >Topic/Plan Title</label
-                    >
-                    <input
-                      type="text"
-                      v-model="topicName"
-                      id="topicName"
-                      name="topicName"
-                      required
-                      class="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-500 dark:text-gray-400"
-                      placeholder="Enter Name of School"
-                    />
-                  </div>
+                  <label
+                    for="FirstName"
+                    class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100"
+                    >Topic/Plan Title</label
+                  >
+                  <input
+                    type="text"
+                    v-model="topicName"
+                    id="topicName"
+                    name="topicName"
+                    required
+                    class="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-500 dark:text-gray-400"
+                    placeholder="Enter Name of School"
+                  />
+                </div>
               </form>
             </div>
           </div>
@@ -574,8 +687,8 @@ const handleSubmit = () => {
                   </p>
                   <p class="text-lg text-white dark:text-gray-400 pt-1">
                     Please select choices based on the categories involving Lesson,
-                    Student and Teacher. Categories highlights the strength, weakness,
-                    and way forward for your lesson.
+                    Student and Teacher. Categories highlights the strength, weakness, and
+                    way forward for your lesson.
                   </p>
                 </div>
               </div>
@@ -705,7 +818,8 @@ const handleSubmit = () => {
                       Student Strengths
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
-                      Please select choices based on the categories involving Student Strengths.
+                      Please select choices based on the categories involving Student
+                      Strengths.
                     </p>
                   </div>
                 </div>
@@ -727,7 +841,8 @@ const handleSubmit = () => {
                       Student Weakness
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
-                      Please select choices based on the categories involving Student Weakness.
+                      Please select choices based on the categories involving Student
+                      Weakness.
                     </p>
                   </div>
                 </div>
@@ -749,7 +864,8 @@ const handleSubmit = () => {
                       Student WayForward
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
-                      Please select choices based on the categories involving Student Way Forward.
+                      Please select choices based on the categories involving Student Way
+                      Forward.
                     </p>
                   </div>
                 </div>
@@ -798,7 +914,8 @@ const handleSubmit = () => {
                       Teacher Strengths
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
-                      Please select choices based on the categories involving Teacher Strengths.
+                      Please select choices based on the categories involving Teacher
+                      Strengths.
                     </p>
                   </div>
                 </div>
@@ -820,7 +937,8 @@ const handleSubmit = () => {
                       Teacher Weakness
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
-                      Please select choices based on the categories involving Teacher Weakness.
+                      Please select choices based on the categories involving Teacher
+                      Weakness.
                     </p>
                   </div>
                 </div>
@@ -842,7 +960,8 @@ const handleSubmit = () => {
                       Teacher Way Forward
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
-                      Please select choices based on the categories involving Teacher Way Forward.
+                      Please select choices based on the categories involving Teacher Way
+                      Forward.
                     </p>
                   </div>
                 </div>

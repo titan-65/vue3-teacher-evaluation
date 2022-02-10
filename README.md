@@ -1,6 +1,14 @@
 # vue3-teacher-evaluation
 
-This template should help get you started developing with Vue 3 in Vite.
+Evaulation tool for teachers who need to quick prototype all there evaluations in quick and easier manner.
+
+Evaluation is a process that critically examines a program. It involves collecting and analyzing information about a program’s activities, characteristics, and outcomes. Its purpose is to make judgments about a program, to improve its effectiveness, and/or to inform programming decisions (Patton, 1987).
+
+This web application is built using [Vue](https://vuejs.org/) and [jsPDF](https://www.npmjs.com/package/jspdf)
+
+![E-val](/public/eval1.png)
+
+![E-val Choices](/public/eval2.png)
 
 ## Recommended IDE Setup
 
