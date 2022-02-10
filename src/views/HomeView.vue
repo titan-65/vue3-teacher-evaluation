@@ -5,7 +5,7 @@ import Default from "../layouts/Default.vue";
 
 <template>
   <main>
-    <Default>
+    
       <div class="mx-auto py-10 h-full md:w-4/5 w-11/12 px-6">
         <!-- Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border -->
         <div class="w-full h-full rounded">
@@ -13,6 +13,6 @@ import Default from "../layouts/Default.vue";
           <!-- Place your content here -->
         </div>
       </div>
-    </Default>
+    
   </main>
 </template>

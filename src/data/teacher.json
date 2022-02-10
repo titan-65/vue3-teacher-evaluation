@@ -2,69 +2,69 @@
   "teacherStrengths": [
     {
       "id": 43,
-      "trait": "accountability",
-      "content": "lesson went according to plan"
+      "trait": "Accountability",
+      "content": "Lesson went according to plan"
     },
     {
       "id": 44,
-      "trait": "strataking",
-      "content": "several teaching strategies to cater for all learners were utilized"
+      "trait": "Strategy",
+      "content": "Several teaching strategies to cater for all learners were utilized"
     },
     { 
       "id": 45,
-      "trait": "adaptability",
-      "content": "skills were broken down into a learnable part" },
+      "trait": "Adaptability",
+      "content": "Skills were broken down into a learnable part" },
     {
       "id": 46,
-      "trait": "creativity",
-      "content": "constructive feedback was provided for activities and skills being practiced"
+      "trait": "Creativity",
+      "content": "Constructive feedback was provided for activities and skills being practiced"
     }
   ],
   "teacherWeakness": [
     {
       "id": 47,
-      "trait": "class-teacher",
-      "content": "teacher was adequately prepared for class"
+      "trait": "Class-teacher",
+      "content": "Teacher was adequately prepared for class"
     },
     {
       "id": 48,
-      "trait": "class-management",
-      "content": "teacher did not utilize resources well"
+      "trait": "Class-management",
+      "content": "Teacher did not utilize resources well"
     },
     { 
       "id": 49,
-      "trait": "learning-management",
-      "content": "teacher did not cater for all learning style" },
+      "trait": "Learning-management",
+      "content": "Teacher did not cater for all learning style" },
     { 
       "id": 50,
-      "trait": "teacher-effectiveness",
-      "content": "teacher was not effective in lesson delivery" },
+      "trait": "Teacher-effectiveness",
+      "content": "Teacher was not effective in lesson delivery" },
     { 
       "id": 51,
-      "trait": "teacher-feedback",
-      "content": "feedback was not constructive" },
+      "trait": "Teacher-feedback",
+      "content": "Feedback was not constructive" },
     { 
       "id": 52,
-      "trait": "teacher-students",
-      "content": "no feedback was offered to students" }
+      "trait": "Teacher-students",
+      "content": "No feedback was offered to students" }
   ],
   "teacherWayForward": [
     {
       "id": 53,
       "trait": "teacher-watch",
-      "content": "improve on lesson planning"
+      "content": "Improve on lesson planning"
     },
     { 
       "id": 54,
       "trait": "teacher-learn",
-      "content": "cater for differentiated learning" },
+      "content": "Cater for differentiated learning" },
     { 
       "id": 55,
       "trait": "teacher-practice",
-      "content": "reflect on lesson and no modifications in future lessons" },
+      "content": "Reflect on lesson and no modifications in future lessons" },
     { 
       "id": 56,
       "trait": "teacher-improve",
-      "content": "provide constant feedback in a timely manner or when needed" }
+      "content": "Provide constant feedback in a timely manner or when needed" }
   ]
 }

@@ -12,12 +12,12 @@
       </div>
       <div class="flex flex-wrap sm:gap-10 gap-8 items-center justify-center mt-8">
         <router-link
-          to="{ name: 'about'}"
+          to="/about"
           class="focus:underline focus:outline-none hover:text-gray-500 text-base cursor-pointer leading-4 text-gray-800"
           >About</router-link
         >
         <a
-          href="javascript:void(0)"
+          href="http://teammps.com"
           class="focus:underline focus:outline-none hover:text-gray-500 text-base cursor-pointer leading-4 text-gray-800"
           >Contact us</a
         >

@@ -1,0 +1,27 @@
+ doc.setFontSize(22)
+  doc.text('Eltham High School', 105, 10, null, null, 'center')
+
+  doc.setFontSize(16)
+  doc.text(`Name: Vantol Bennett`, 10, 20)
+  doc.text('Email: test@email.com', 10, 30)
+  doc.text('Class: 7 Garvey', 10, 40)
+
+  doc.setLineWidth(0.5)
+  doc.line(10, 45, 200, 45)
+
+  doc.setFontSize(16)
+  doc.text('Lesson', 10, 50)
+  doc.text(lessonData, 40, 10)
+
+  doc.setLineWidth(0.5)
+  doc.line(10, 40, 200, 40)
+
+  doc.setFontSize(16)
+  doc.text('Student', 10, 50)
+  doc.text(studentData, 40, 10)
+
+  doc.setLineWidth(0.5)
+  doc.line(10, 60, 200, 60)
+
+  doc.setFontSize(16)
+  doc.text('Teacher', 10, 70)

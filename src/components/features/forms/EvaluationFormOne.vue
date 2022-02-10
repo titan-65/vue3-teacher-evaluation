@@ -11,7 +11,7 @@ const lastName = ref('')
 const email = ref('')
 const className = ref('')
 const schoolName = ref('')
-
+const topicName = ref('')
 
 let { strengths, weakness, wayForward } = lessonData
 let { studentStrengths, studentWayForward, studentWeakness } = studentData
@@ -66,6 +66,84 @@ const onStrengthChecked = (selectedIndex) => {
   console.log(selectedIndex)
   try {
     _strength[selectedIndex].isSelected = !_strength[selectedIndex].isSelected
+  } catch (e) {
+    console.error('invalid selection using index: ', selectedIndex)
+  }
+}
+
+const onWeaknessChecked = (selectedIndex) => {
+  console.log(selectedIndex)
+  try {
+    _weakness[selectedIndex].isSelected = !_weakness[selectedIndex].isSelected
+  } catch (e) {
+    console.error('invalid selection using index: ', selectedIndex)
+  }
+}
+
+const onWayForwardChecked = (selectedIndex) => {
+  console.log(selectedIndex)
+  try {
+    _wayForward[selectedIndex].isSelected = !_wayForward[selectedIndex].isSelected
+  } catch (e) {
+    console.error('invalid selection using index: ', selectedIndex)
+  }
+}
+
+const onStudentStrengthChecked = (selectedIndex) => {
+  console.log(selectedIndex)
+  try {
+    _studentStrengths[selectedIndex].isSelected =
+      !_studentStrengths[selectedIndex].isSelected
+  } catch (e) {
+    console.error('invalid selection using index: ', selectedIndex)
+  }
+}
+
+const onStudentWeaknessChecked = (selectedIndex) => {
+  console.log(selectedIndex)
+  try {
+    _studentWeakness[selectedIndex].isSelected =
+      !_studentWeakness[selectedIndex].isSelected
+  } catch (e) {
+    console.error('invalid selection using index: ', selectedIndex)
+  }
+}
+
+const onStudentWayForwardChecked = (selectedIndex) => {
+  console.log(selectedIndex)
+  try {
+    _studentWayForward[selectedIndex].isSelected =
+      !_studentWayForward[selectedIndex].isSelected
+  } catch (e) {
+    console.error('invalid selection using index: ', selectedIndex)
+  }
+}
+
+const onTeacherStrengthChecked = (selectedIndex) => {
+  console.log(selectedIndex)
+  try {
+    _teacherStrengths[selectedIndex].isSelected =
+      !_teacherStrengths[selectedIndex].isSelected
+  } catch (e) {
+    console.error('invalid selection using index: ', selectedIndex)
+  }
+}
+
+const onTeacherWeaknessChecked = (selectedIndex) => {
+  console.log(selectedIndex)
+  try {
+    _teacherWeakness[selectedIndex].isSelected =
+      !_teacherWeakness[selectedIndex].isSelected
+  } catch (e) {
+    console.error('invalid selection using index: ', selectedIndex)
+  }
+}
+
+const onTeacherWayForwardChecked = (selectedIndex) => {
+  console.log(selectedIndex)
+  try {
+    _teacherWayForward[selectedIndex].isSelected =
+      !_teacherWayForward[selectedIndex].isSelected
   } catch (e) {
     console.error('invalid selection using index: ', selectedIndex)
   }
@@ -140,15 +218,15 @@ const handleSubmit = () => {
   }
 
   for (let i = 0; i < selectedTeacherStrengths.length; i++) {
-    studentData.push(selectedTeacherStrengths[i].content)
+    teacherData.push(selectedTeacherStrengths[i].content)
   }
 
   for (let i = 0; i < selectedTeacherWeakness.length; i++) {
-    studentData.push(selectedTeacherWeakness[i].content)
+    teacherData.push(selectedTeacherWeakness[i].content)
   }
 
   for (let i = 0; i < selectedTeacherWayForward.length; i++) {
-    studentData.push(selectedTeacherWayForward[i].content)
+    teacherData.push(selectedTeacherWayForward[i].content)
   }
 
   // console.log(selectedStrengths)
@@ -164,33 +242,77 @@ const handleSubmit = () => {
   const doc = new jsPDF()
 
   doc.setFontSize(22)
-  doc.text(schoolName.value, 105, 80, null, null, 'center')
+  doc.text(schoolName.value, 105, 10, null, null, 'center')
 
-  doc.setFontSize(16)
-  doc.text(`Name: ${firstName.value} ${lastName.value}`, 10, 10)
-  doc.text(`Email: ${email.value}`, 10, 10)
-  doc.text(className.value, 10, 10)
+  doc.setFontSize(12)
+  doc.text(`Name: ${firstName.value} ${lastName.value}`, 10, 20)
+  doc.text(`Email: ${email.value}`, 10, 30)
+  doc.text(`Class: ${className.value}`, 10, 40)
+  doc.text(`Lesson Title/Topic: ${className.value}`, 10, 50)
 
-  doc.setLineWidth(0.5)
-  doc.line(10, 20, 200, 20)
-
-  doc.setFontSize(16)
-  doc.text('Lesson', 10, 30)
-  doc.text(lessonData, 40, 10)
 
   doc.setLineWidth(0.5)
-  doc.line(10, 40, 200, 40)
+  doc.line(10, 55, 200, 55)
 
+  doc.setFontSize(12)
+  doc.text(
+    'Lesson plan reflection and evaluation is a powerful tool that will help you become a better teacher.',
+    10,
+    60
+  )
+
+  // for loop lessonData
   doc.setFontSize(16)
-  doc.text('Student', 10, 50)
-  doc.text(studentData, 40, 10)
+  doc.text('Lesson Evaluation', 10, 70)
+
+  lessonData.forEach((data, index) => {
+    doc.setFontSize(12)
+    doc.text(data, 15, 80 + index * 10)
+  })
+
+  doc.addPage()
+  doc.setFontSize(22)
+  doc.text(schoolName.value, 105, 10, null, null, 'center')
+
+  doc.setFontSize(12)
+  doc.text(`Name: ${firstName.value} ${lastName.value}`, 10, 20)
+  doc.text(`Email: ${email.value}`, 10, 30)
+  doc.text(`Class: ${className.value}`, 10, 40)
+  doc.text(`Lesson Title/Topic: ${className.value}`, 10, 50)
+
 
   doc.setLineWidth(0.5)
-  doc.line(10, 60, 200, 60)
+  doc.line(10, 55, 200, 55)
 
   doc.setFontSize(16)
-  doc.text('Teacher', 10, 70)
-  doc.text(teacherData, 40, 10)
+  doc.text('Student Evaluation', 10, 60)
+
+  studentData.forEach((data, index) => {
+    doc.setFontSize(12)
+    doc.text(data, 15, 70 + index * 10)
+  })
+
+  doc.addPage()
+  doc.setFontSize(22)
+  doc.text(schoolName.value, 105, 10, null, null, 'center')
+
+  doc.setFontSize(12)
+  doc.text(`Name: ${firstName.value} ${lastName.value}`, 10, 20)
+  doc.text(`Email: ${email.value}`, 10, 30)
+  doc.text(`Class: ${className.value}`, 10, 40)
+  doc.text(`Lesson Title/Topic: ${className.value}`, 10, 50)
+
+
+  doc.setLineWidth(0.5)
+  doc.line(10, 55, 200, 55)
+
+  doc.setFontSize(16)
+  doc.text('Teacher Evaluation', 10, 60)
+
+  teacherData.forEach((data, index) => {
+    doc.setFontSize(12)
+    doc.text(data, 15, 70 + index * 10)
+  })
 
   doc.save(`${className.value} -${firstName.value} ${lastName.value} - Evaluation.pdf`)
 }
@@ -415,6 +537,22 @@ const handleSubmit = () => {
                     />
                   </div>
                 </div>
+                <div class="xl:w-1/4 lg:w-1/2 md:w-1/2 flex flex-col mb-6">
+                    <label
+                      for="FirstName"
+                      class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100"
+                      >Topic/Plan Title</label
+                    >
+                    <input
+                      type="text"
+                      v-model="topicName"
+                      id="topicName"
+                      name="topicName"
+                      required
+                      class="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-500 dark:text-gray-400"
+                      placeholder="Enter Name of School"
+                    />
+                  </div>
               </form>
             </div>
           </div>
@@ -429,10 +567,10 @@ const handleSubmit = () => {
                   <p class="text-lg text-white dark:text-gray-100 font-bold">
                     Evaulation Choices
                   </p>
-                  <p class="text-sm text-white dark:text-gray-400 pt-1">
+                  <p class="text-lg text-white dark:text-gray-400 pt-1">
                     Please select choices based on the categories involving Lesson,
-                    Student, and Teacher. Categories highlights the strength, weakness,
-                    and way forward your lesson.
+                    Student and Teacher. Categories highlights the strength, weakness,
+                    and way forward for your lesson.
                   </p>
                 </div>
               </div>
@@ -503,7 +641,7 @@ const handleSubmit = () => {
                 v-for="(evaluate, index) in _weakness"
                 :key="evaluate"
                 :strength="evaluate"
-                @some-event="() => onStrengthChecked(index)"
+                @some-event="() => onWeaknessChecked(index)"
               />
             </div>
             <div class="xl:w-full py-5 px-8 bg-white">
@@ -525,14 +663,14 @@ const handleSubmit = () => {
                 v-for="(evaluate, index) in _wayForward"
                 :key="evaluate"
                 :strength="evaluate"
-                @some-event="() => onStrengthChecked(index)"
+                @some-event="() => onWayForwardChecked(index)"
               />
             </div>
           </div>
           <!-- Student Starts Here -->
           <div class="container mx-auto pb-6">
             <div
-              class="flex items-center pb-4 border-b border-gray-300 dark:border-gray-700 px-8 text-gray-800 dark:text-gray-100"
+              class="flex items-center pb-4 bg-sky-500 border-b border-gray-300 dark:border-gray-700 px-8 text-gray-800 dark:text-gray-100"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -550,7 +688,7 @@ const handleSubmit = () => {
                 <rect x="3" y="5" width="18" height="14" rx="2" />
                 <polyline points="3 7 12 13 21 7" />
               </svg>
-              <p class="text-sm font-bold ml-2 text-gray-800 dark:text-gray-100">
+              <p class="text-lg font-bold ml-2 text-gray-800 dark:text-gray-100">
                 Student
               </p>
             </div>
@@ -562,7 +700,7 @@ const handleSubmit = () => {
                       Student Strengths
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
-                      Please select choices based on the categories involving Lesson.
+                      Please select choices based on the categories involving Student Strengths.
                     </p>
                   </div>
                 </div>
@@ -573,7 +711,7 @@ const handleSubmit = () => {
                 v-for="(studentEval, index) in _studentStrengths"
                 :key="studentEval"
                 :strength="studentEval"
-                @some-event="() => onStrengthChecked(index)"
+                @some-event="() => onStudentStrengthChecked(index)"
               />
             </div>
             <div class="xl:w-full py-5 px-8">
@@ -584,7 +722,7 @@ const handleSubmit = () => {
                       Student Weakness
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
-                      Please select choices based on the categories involving Lesson.
+                      Please select choices based on the categories involving Student Weakness.
                     </p>
                   </div>
                 </div>
@@ -595,7 +733,7 @@ const handleSubmit = () => {
                 v-for="(studentEval, index) in _studentWeakness"
                 :key="studentEval"
                 :strength="studentEval"
-                @some-event="() => onStrengthChecked(index)"
+                @some-event="() => onStudentWeaknessChecked(index)"
               />
             </div>
             <div class="xl:w-full py-5 px-8">
@@ -606,7 +744,7 @@ const handleSubmit = () => {
                       Student WayForward
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
-                      Please select choices based on the categories involving Lesson.
+                      Please select choices based on the categories involving Student Way Forward.
                     </p>
                   </div>
                 </div>
@@ -617,7 +755,7 @@ const handleSubmit = () => {
                 v-for="(studentEval, index) in _studentWayForward"
                 :key="studentEval"
                 :strength="studentEval"
-                @some-event="() => onStrengthChecked(index)"
+                @some-event="() => onStudentWayForwardChecked(index)"
               />
             </div>
           </div>
@@ -625,7 +763,7 @@ const handleSubmit = () => {
           <!-- Teacher Starts Here -->
           <div class="container mx-auto pb-6">
             <div
-              class="flex items-center pb-4 border-b border-gray-300 dark:border-gray-700 px-8 text-gray-800 dark:text-gray-100"
+              class="flex items-center pb-4 border-b bg-sky-500 border-gray-300 dark:border-gray-700 px-8 text-gray-800 dark:text-gray-100"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -643,7 +781,7 @@ const handleSubmit = () => {
                 <rect x="3" y="5" width="18" height="14" rx="2" />
                 <polyline points="3 7 12 13 21 7" />
               </svg>
-              <p class="text-sm font-bold ml-2 text-gray-800 dark:text-gray-100">
+              <p class="text-lg font-bold ml-2 text-gray-800 dark:text-gray-100">
                 Teacher
               </p>
             </div>
@@ -655,7 +793,7 @@ const handleSubmit = () => {
                       Teacher Strengths
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
-                      Please select choices based on the categories involving Lesson.
+                      Please select choices based on the categories involving Teacher Strengths.
                     </p>
                   </div>
                 </div>
@@ -666,7 +804,7 @@ const handleSubmit = () => {
                 v-for="(teacherEval, index) in _teacherStrengths"
                 :key="teacherEval"
                 :strength="teacherEval"
-                @some-event="() => onStrengthChecked(index)"
+                @some-event="() => onTeacherStrengthChecked(index)"
               />
             </div>
             <div class="xl:w-full py-5 px-8">
@@ -677,7 +815,7 @@ const handleSubmit = () => {
                       Teacher Weakness
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
-                      Please select choices based on the categories involving Lesson.
+                      Please select choices based on the categories involving Teacher Weakness.
                     </p>
                   </div>
                 </div>
@@ -688,7 +826,7 @@ const handleSubmit = () => {
                 v-for="(teacherEval, index) in _teacherWeakness"
                 :key="teacherEval"
                 :strength="teacherEval"
-                @some-event="() => onStrengthChecked(index)"
+                @some-event="() => onTeacherWeaknessChecked(index)"
               />
             </div>
             <div class="xl:w-full py-5 px-8">
@@ -696,10 +834,10 @@ const handleSubmit = () => {
                 <div class="container mx-auto">
                   <div class="mx-auto xl:w-full">
                     <p class="text-lg text-gray-800 dark:text-gray-100 font-bold">
-                      Teacher WayForward
+                      Teacher Way Forward
                     </p>
                     <p class="text-sm text-gray-500 dark:text-gray-400 pt-1">
-                      Please select choices based on the categories involving Lesson.
+                      Please select choices based on the categories involving Teacher Way Forward.
                     </p>
                   </div>
                 </div>
@@ -710,7 +848,7 @@ const handleSubmit = () => {
                 v-for="(teacherEval, index) in _teacherWayForward"
                 :key="teacherEval"
                 :strength="teacherEval"
-                @some-event="() => onStrengthChecked(index)"
+                @some-event="() => onTeacherWayForwardChecked(index)"
               />
             </div>
           </div>
