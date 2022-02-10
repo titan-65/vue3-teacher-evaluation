@@ -234,6 +234,10 @@ const handleSubmit = () => {
   console.log(studentData)
   console.log(teacherData)
 
+  const date = new Date()
+
+  const today = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear()
+
   if (!firstName.value || !lastName.value || !schoolName.value) {
     alert('Please fill in all fields in the school information section')
     return
@@ -279,17 +283,18 @@ const handleSubmit = () => {
   doc.text(`Email: ${email.value}`, 10, 30)
   doc.text(`Class: ${className.value}`, 10, 40)
   doc.text(`Lesson Title/Topic: ${className.value}`, 10, 50)
+  doc.text(`Date: ${today}`, 10, 60)
 
 
   doc.setLineWidth(0.5)
-  doc.line(10, 55, 200, 55)
+  doc.line(10, 55, 200, 65)
 
   doc.setFontSize(16)
-  doc.text('Student Evaluation', 10, 60)
+  doc.text('Student Evaluation', 10, 70)
 
   studentData.forEach((data, index) => {
     doc.setFontSize(12)
-    doc.text(data, 15, 70 + index * 10)
+    doc.text(data, 15, 80 + index * 10)
   })
 
   doc.addPage()

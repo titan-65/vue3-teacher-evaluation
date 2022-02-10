@@ -14,7 +14,7 @@
         <div class="w-full lg:w-8/12">
           <img
             class="w-full h-full"
-            src="https://i.ibb.co/FhgPJt8/Rectangle-116.png"
+            src="https://teammps.com/static/theme-images/mps_logo_color-sm.png"
             alt="A group of People"
           />
         </div>
