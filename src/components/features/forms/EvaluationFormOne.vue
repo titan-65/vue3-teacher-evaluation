@@ -579,7 +579,7 @@ const handleSubmit = () => {
                     name="topicName"
                     required
                     class="border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm bg-transparent rounded text-sm focus:outline-none focus:border-indigo-700 placeholder-gray-500 text-gray-500 dark:text-gray-400"
-                    placeholder="Enter Name of School"
+                    placeholder="Enter Title of Topic Here"
                   />
                 </div>
               </form>
