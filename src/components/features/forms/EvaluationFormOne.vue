@@ -361,7 +361,7 @@ const handleSubmit = () => {
   doc.text('Additional Evaluation', 10, 60)
 
   doc.setFontSize(12)
-  doc.text(feedbackInput.value, 10, 70)
+  doc.text(`${feedbackInput.value}`, 10, 70)
 
   doc.save(`${className.value} -${firstName.value} ${lastName.value} - Evaluation.pdf`)
 }
@@ -684,7 +684,7 @@ const handleSubmit = () => {
                 </div>
                 <div class="mt-8 flex flex-col xl:w-full lg:w-1/2 md:w-1/2 w-full">
                     <label for="about" class="pb-2 text-sm font-bold text-gray-800 dark:text-gray-100">Additional Evaluation</label>
-                    <textarea id="about" name="about" required class="bg-transparent border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm rounded text-sm focus:outline-none focus:border-indigo-700 resize-none placeholder-gray-500 text-gray-500 dark:text-gray-400" placeholder="Let the world know who you are" rows="5"></textarea>
+                    <textarea id="about" v-model="feedbackInput" name="about" class="bg-transparent border border-gray-300 dark:border-gray-700 pl-3 py-3 shadow-sm rounded text-sm focus:outline-none focus:border-indigo-700 resize-none placeholder-gray-500 text-gray-500 dark:text-gray-400" placeholder="Additional comments or necessary information" rows="5"></textarea>
                     <p class="w-full text-right text-xs pt-1 text-gray-500 dark:text-gray-400">Character Limit: 1000</p>
                 </div>
                 <div class="container mx-auto w-11/12 xl:w-full">
