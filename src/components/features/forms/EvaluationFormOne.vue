@@ -281,25 +281,30 @@ const handleSubmit = () => {
   doc.text(`Email: ${email.value}`, 10, 30)
   doc.text(`Class: ${className.value}`, 10, 40)
   doc.text(`Lesson Title/Topic: ${className.value}`, 10, 50)
+  doc.text(`Date: ${today}`, 10, 60)
+
 
   doc.setLineWidth(0.5)
-  doc.line(10, 55, 200, 55)
+  doc.line(10, 65, 200, 65)
 
   doc.setFontSize(12)
   doc.text(
     'Lesson plan reflection and evaluation is a powerful tool that will help you become a better teacher.',
     10,
-    60
+    70
   )
 
   // for loop lessonData
   doc.setFontSize(16)
-  doc.text('Lesson Evaluation', 10, 70)
+  doc.text('Lesson Evaluation', 10, 80)
 
   lessonData.forEach((data, index) => {
     doc.setFontSize(12)
-    doc.text(data, 15, 80 + index * 10)
+    doc.text(data, 15, 90 + index * 10)
   })
+
+
+  // Second Page
 
   doc.addPage()
   doc.setFontSize(22)
@@ -313,7 +318,7 @@ const handleSubmit = () => {
   doc.text(`Date: ${today}`, 10, 60)
 
   doc.setLineWidth(0.5)
-  doc.line(10, 55, 200, 65)
+  doc.line(10, 65, 200, 65)
 
   doc.setFontSize(16)
   doc.text('Student Evaluation', 10, 70)
